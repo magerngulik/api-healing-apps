@@ -17,11 +17,6 @@ class Package extends Model
         return $this->hasMany(Itinerary::class);
     }
 
-    // public function destination(): HasMany
-    // {
-    //     return $this->hasMany(Destination::class);
-    // }
- 
     public function destination(): BelongsToMany
     {
         return $this->belongsToMany(Destination::class,'package_destinations','package_id','destination_id');

@@ -7,6 +7,7 @@ use App\Models\Destination;
 use Illuminate\Http\Request;
 use App\Models\Accommodation;
 use Illuminate\Support\Facades\Route;
+use App\Http\Resources\PackageResource;
 use App\Http\Resources\ProductResource;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -27,11 +28,16 @@ Route::get('desta/', function () {
 });
 
 Route::get('/package', function () {
-    $data = [
-        "data" => Package::with('itinerary','destination')->get()
-    ];
+    return PackageResource::collection(Package::with('itinerary','destination')->get());
+});
 
-    return response()->json($data, 200);
+Route::get('detailpackage/{id}', function ($id) {
+    $query = Package::with('itinerary','destination')
+    ->where('id', $id)
+    ->get();    
+
+    return PackageResource::collection($query);
+    
 });
 
 Route::get('/itinerary', function () {
