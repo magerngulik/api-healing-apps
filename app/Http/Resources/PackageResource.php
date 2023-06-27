@@ -21,14 +21,25 @@ class PackageResource extends JsonResource
             "name"=> $this->name,
             "description"=> $this->description,
             "price"=> intval($this->price),
-            "image"=> ImageHelper::convertImagePathToUrl($this->image),
-            "destination" => $this->whenLoaded('destination',function(){
-                    return $this->destination->pluck('name');
-            }),            
+            "image"=> ImageHelper::convertImagePathToUrl($this->image),     
             "itinerary" => $this->whenLoaded('itinerary', function () {
                 return collect($this->itinerary)->map->only('day', 'description')->first();
             }),
-            
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date,
+            'person' => $this->max_capacity,
+            "destination" => $this->whenLoaded('destination',function(){
+                return collect($this->destination)->map(function ($item) {
+                    return [
+                        "name" => $item['name'],
+                        "description" => $item['description'],
+                        "image" => ImageHelper::convertImagePathToUrl($item['image']),
+                        // "location_id" => $item['location_id'],
+                        "location_name" => $item['location']['name'],
+                    ];
+                });
+            }),            
+              
         ];
     }
 }

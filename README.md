@@ -7,60 +7,152 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Basis URL
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Base url tergantung dengan setting pada komputer teman teman, disini karna masih menggunakan local maka base url yang saya gunakan sebagai berikut:
+```
+http://127.0.0.1:8000
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Login 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Deskripsi**: Melakukan login ke dalam sistem.
 
-## Learning Laravel
+**URL**: `api/auth/login`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Metode**: POST
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**Parameter Wajib Di Isi**:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- `email` (wajib): admin@admin.com
+- `password` (wajib): password
 
-## Laravel Sponsors
+**Contoh Permintaan**:
+```http
+POST /api/auth/login
+Content-Type: application/json
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+{
+  "email": "admin@admin.com",
+  "password": "password"
+}
+```
+**Contoh Respons**:
 
-### Premium Partners
+```json
+{
+  "status": "success",
+  "data": {
+    "token": "8|dCBn36JNlXgpUDmX4O6vm5CXTslKWmdgrTO9PtVb",
+    "user": {
+      "id": 11,
+      "email": "admin@admin.com",
+      "avatar": null
+    }
+  }
+}
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```
 
-## Contributing
+### Register 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**Deskripsi**: Melakukan login ke dalam sistem.
 
-## Code of Conduct
+**URL**: `api/auth/login`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**Metode**: POST
 
-## Security Vulnerabilities
+**Parameter Wajib Di Isi**:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- `email` (wajib): admin@admin.com
+- `password` (wajib): password,
+- `name` (wajib): admin ganteng,
+- `tanggal_lahir` (wajib): 2016-08-05,
+- `nomor_telp` (wajib): 083333333,
+- `alamat` (wajib): jalan keuning,
+- `avatar` (optional): file,
 
-## License
+**Contoh Permintaan**:
+```http
+POST /api/auth/register
+Content-Type: application/json
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+{
+  "email": "admin@admin.com",
+  "password" : "password",
+  "name": "zulkarnaen",
+  "tanggal_lahir": "2016-08-05",
+  "nomor_telp": "083333333",
+  "alamat":  "jalan keuning"
+}
+```
+**Contoh Respons**:
+
+```json
+{
+  "message": "User registered successfully"
+}
+
+```
+
+### Logout
+
+API ini memerlukan autentikasi menggunakan token. Untuk mengakses endpoint ini, Anda perlu menyertakan token autentikasi dalam header permintaan. untuk mendapatkan token nya ketika di akses pada end point [login](#login) di atas.
+
+**Deskripsi**: Melakukan logout dari sistem.
+
+**URL**: `api/auth/login`
+
+**Metode**: GET
+
+```http
+GET /api/logout
+Authorization: Bearer {token}
+
+```
+**Contoh Respons**:
+
+```json
+{
+  "status": "success",
+  "message": "berhasil logout"
+}
+
+```
+
+### Profile
+
+API ini memerlukan autentikasi menggunakan token. Untuk mengakses endpoint ini, Anda perlu menyertakan token autentikasi dalam header permintaan. untuk mendapatkan token nya ketika di akses pada end point [login](#login) di atas.
+
+**Deskripsi**: Melihat profile user yang sedang login dengan token yang tersedia
+
+**URL**: `api/auth/profile`
+
+**Metode**: GET
+
+```http
+GET /api/logout
+Authorization: Bearer {token}
+
+```
+**Contoh Respons**:
+
+```json
+{
+  {
+  "id": 1,
+  "role_id": 1,
+  "name": "Admin",
+  "email": "admin@admin.com",
+  "avatar": "users/default.png",
+  "tanggal_lahir": null,
+  "alamat": null,
+  "nomor_telp": null,
+  "email_verified_at": null,
+  "settings": [],
+  "created_at": "2023-06-22T05:43:56.000000Z",
+  "updated_at": "2023-06-22T05:43:56.000000Z"
+}
+}
+
+```
