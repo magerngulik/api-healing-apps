@@ -61,7 +61,8 @@ Route::prefix('location')->group(function () {
 });
 
 Route::prefix('transaction')->group(function () {
-    Route::post('/add', [TransactionController::class, 'addtransaction']); 
+    Route::post('/add', [TransactionController::class, 'addtransaction'])->middleware('auth:sanctum'); 
+    Route::get('/user-transaction', [TransactionController::class, 'usertransaction'])->middleware('auth:sanctum');  
 });
 
 

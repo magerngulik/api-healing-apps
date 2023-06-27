@@ -316,7 +316,6 @@ GET api/location/getall
 
 **Deskripsi**: Untuk melakukan transaksi pastikan semua data yang di minta diisi dengan benar
 **URL**: `api/transaction/add`
-
 **Metode**: POST
 
 ```http
@@ -326,6 +325,9 @@ POST /api/transaction/add
 
 | Nama           | Inisialisasi | Wajib | Tipe    | Deskripsi                                |
 | -------------- | ------------ | ----- | ------- | ---------------------------------------- |
+| Accept         | Header       | Ya    | string  | type dari balikan application/json  |
+| Authorization  | Header       | Ya    | string  | Token otorisasi untuk mengakses API.     |
+| package_id     | Body         | Ya    | integer  | id dari package yang dipilih   |
 | package_id     | Body         | Ya    | integer  | id dari package yang dipilih   |
 | user_id        | Body         | Ya    | integer | id dari user yang melakuakan transaksi |
 | destination_id | Body         | Ya    | integer | id dari destinasi yang di sediakan|
@@ -342,7 +344,7 @@ POST /api/transaction/add
 
 **Contoh Penggunaa**
 ```yaml
-GET /api/transaction/add
+POST /api/transaction/add
 body:
   {
     "package_id": 7,	
@@ -362,3 +364,52 @@ body:
   "message": "Transaksi Berhasil"
 }
 ```
+
+### Lihat Transacti User Login
+
+**Deskripsi**: Untuk mendapatkan semua transaksi dari user yang sedang login
+**URL**: `api/transaction/user-transaction`
+**Metode**: POST
+
+```http
+POST /api/transaction/user-transaction
+```
+**Parameter**
+
+| Nama           | Inisialisasi | Wajib | Tipe    | Deskripsi                                |
+| -------------- | ------------ | ----- | ------- | ---------------------------------------- |
+| Accept         | Header       | Ya    | string  | type dari balikan application/json  |
+| Authorization  | Header       | Ya    | string  | Token otorisasi untuk mengakses API.     |
+
+
+**Respons**
+- Kode Status 201: OK. Transaksi Berhasil.
+- Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
+
+**Contoh Penggunaa**
+```yaml
+POST /api/transaction/user-transaction
+Headers:
+Accept: application/json
+Authorization: Bearer 11|RgOF6JXB5kx72Jp3DeUN7KpNfa4CPhDnGYP9LQJB
+```
+**Contoh Respons**:
+
+```json
+[
+  {
+    "id": 1,
+    "package_id": 7,
+    "user_id": 3,
+    "destination_id": 5,
+    "transaction_date": "2023-06-29",
+    "total_amount": "50000000",
+    "payment_status": "Panding",
+    "payment_method": "Transfer Bank",
+    "participant_count": 3,
+    "created_at": "2023-06-27T17:52:02.000000Z",
+    "updated_at": "2023-06-27T17:52:02.000000Z"
+  },
+]
+```
+

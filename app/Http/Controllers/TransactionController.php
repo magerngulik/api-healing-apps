@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class TransactionController extends Controller
 {
-    function index() {
-    }
-    function transaction(){    
+    public function usertransaction(Request $request)
+    {
+        $userId = Auth::id();
+        $transactions = Transaction::where('user_id', $userId)->get();
+        return response()->json($transactions, 200);
     }
 
     function addtransaction(Request $request){
