@@ -38,9 +38,7 @@ class PackageController extends Controller
         $data = [
             "data" => Destination::with('accommodation','package','location')->get()
         ];
-
         return  DestinationResource::collection($data);
-        
     }
     
 }

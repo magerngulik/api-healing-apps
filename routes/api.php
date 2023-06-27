@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Resources\PackageResource;
 use App\Http\Resources\ProductResource;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\AuthentificationController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -53,3 +54,9 @@ Route::prefix('auth')->group(function () {
     Route::get('/logout', [AuthentificationController::class, 'logout'])->middleware('auth:sanctum'); 
     Route::get('/me', [AuthentificationController::class, 'me'])->middleware('auth:sanctum'); 
 });
+
+Route::prefix('location')->group(function () {
+    Route::get('/getall', [LocationController::class, 'index']); 
+});
+
+

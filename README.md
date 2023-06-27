@@ -220,9 +220,9 @@ GET /api/active-package
 
 | Nama           | Inisialisasi | Wajib | Tipe    | Deskripsi                                |
 | -------------- | ------------ | ----- | ------- | ---------------------------------------- |
-| Start_Date     | Header       | Ya    | string  | Tanggal mulai data yang diinginkan.      |
-| Max_Capacity   | Header       | Ya    | integer | Kapasitas maksimum data yang diinginkan. |
-| Location_ID    | Header       | Ya    | string  | ID lokasi data yang diinginkan.          |
+| start_date     | Header       | Ya    | string  | Tanggal mulai data yang diinginkan.      |
+| max_capacity   | Header       | Ya    | integer | Kapasitas maksimum data yang diinginkan. |
+| location_id    | Header       | Ya    | string  | ID lokasi data yang diinginkan.          |
 
 **Respons**
 - Kode Status 200: OK. Data berhasil ditemukan.
@@ -231,11 +231,11 @@ GET /api/active-package
 
 **Contoh Penggunaa**
 ```yaml
-GET /data
+GET /api/active-package
 Headers:
-  Start_Date: 2022-01-15
-  Max_Capacity: 6
-  Location_ID: 3
+  start_date: 2022-01-15
+  max_capacity: 6
+  location_id: 3
 ```
 **Contoh Respons**:
 
@@ -267,6 +267,47 @@ Headers:
       ]
     },
   ]
+}
+
+```
+
+### Get All Location
+
+**Deskripsi**: Untuk mendapatkan id location yang di miliki oleh tabel location, digunakan pada bagian [serching](#searching-package) di atas 
+
+**URL**: `api/location/getall`
+
+**Metode**: GET
+
+```http
+GET /api/location/getall
+```
+**Respons**
+- Kode Status 200: OK. Data berhasil ditemukan.
+- Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
+
+**Contoh Penggunaa**
+```yaml
+GET api/location/getall
+```
+**Contoh Respons**:
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Bali",
+      "city": "Denpasar",
+      "country": "Indonesia"
+    },
+    {
+      "id": 2,
+      "name": "Paris",
+      "city": "Paris",
+      "country": "France"
+    },
+  ] 
 }
 
 ```
