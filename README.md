@@ -106,7 +106,7 @@ API ini memerlukan autentikasi menggunakan token. Untuk mengakses endpoint ini, 
 **Metode**: GET
 
 ```http
-GET /api/logout
+GET /api/auth/logout
 Authorization: Bearer {token}
 
 ```
@@ -131,7 +131,7 @@ API ini memerlukan autentikasi menggunakan token. Untuk mengakses endpoint ini, 
 **Metode**: GET
 
 ```http
-GET /api/logout
+GET /api/auth/me
 Authorization: Bearer {token}
 
 ```
