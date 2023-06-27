@@ -382,7 +382,7 @@ POST /api/transaction/user-transaction
 
 
 **Respons**
-- Kode Status 201: OK. Transaksi Berhasil.
+- Kode Status 200: OK
 - Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
 
 **Contoh Penggunaa**
