@@ -12,6 +12,7 @@ use App\Http\Resources\PackageResource;
 use App\Http\Resources\ProductResource;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AuthentificationController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -58,5 +59,14 @@ Route::prefix('auth')->group(function () {
 Route::prefix('location')->group(function () {
     Route::get('/getall', [LocationController::class, 'index']); 
 });
+
+Route::prefix('transaction')->group(function () {
+    Route::post('/add', [TransactionController::class, 'addtransaction']); 
+});
+
+
+
+
+
 
 

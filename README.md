@@ -270,7 +270,6 @@ Headers:
 }
 
 ```
-
 ### Get All Location
 
 **Deskripsi**: Untuk mendapatkan id location yang di miliki oleh tabel location, digunakan pada bagian [serching](#searching-package) di atas 
@@ -310,4 +309,56 @@ GET api/location/getall
   ] 
 }
 
+```
+
+
+### Add Transaction
+
+**Deskripsi**: Untuk melakukan transaksi pastikan semua data yang di minta diisi dengan benar
+**URL**: `api/transaction/add`
+
+**Metode**: POST
+
+```http
+POST /api/transaction/add
+```
+**Parameter**
+
+| Nama           | Inisialisasi | Wajib | Tipe    | Deskripsi                                |
+| -------------- | ------------ | ----- | ------- | ---------------------------------------- |
+| package_id     | Body         | Ya    | integer  | id dari package yang dipilih   |
+| user_id        | Body         | Ya    | integer | id dari user yang melakuakan transaksi |
+| destination_id | Body         | Ya    | integer | id dari destinasi yang di sediakan|
+| transaction_date| Body        | Ya    | date  | Hari dari transaksi berlangsung|
+| total_amount   | Body         | Ya    | double | total biaya semua transaksi|
+| payment_status | Body         | Ya    | enum  | status pembayaran terdiri dari:pending,completed,cancelled|
+| payment_method | Body         | Ya    | string  | isi dengan method pembayatan|
+| participant_count| Body       | Ya    | int  | jumlah orang yang ikut, pastikan tidak melibihi jumlah package|
+
+
+**Respons**
+- Kode Status 201: OK. Transaksi Berhasil.
+- Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
+
+**Contoh Penggunaa**
+```yaml
+GET /api/transaction/add
+body:
+  {
+    "package_id": 7,	
+    "user_id":1,	
+    "destination_id":5,	
+    "transaction_date":"2022-01-01",	
+    "total_amount":13,	
+    "payment_status":"pending",	
+    "payment_method":"Transfer Bank",	
+    "participant_count": 15
+  }
+```
+**Contoh Respons**:
+
+```json
+{
+  "message": "Transaksi Berhasil"
+}
 ```
