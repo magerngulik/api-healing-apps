@@ -314,9 +314,9 @@ GET api/location/getall
 
 ### Add Transaction
 
-**Deskripsi**: Untuk melakukan transaksi pastikan semua data yang di minta diisi dengan benar
-**URL**: `api/transaction/add`
-**Metode**: POST
+**Deskripsi**: Untuk melakukan transaksi pastikan semua data yang di minta diisi dengan benar <br>
+**URL**: `api/transaction/add` <br>
+**Metode**: POST <br>
 
 ```http
 POST /api/transaction/add
@@ -327,7 +327,6 @@ POST /api/transaction/add
 | -------------- | ------------ | ----- | ------- | ---------------------------------------- |
 | Accept         | Header       | Ya    | string  | type dari balikan application/json  |
 | Authorization  | Header       | Ya    | string  | Token otorisasi untuk mengakses API.     |
-| package_id     | Body         | Ya    | integer  | id dari package yang dipilih   |
 | package_id     | Body         | Ya    | integer  | id dari package yang dipilih   |
 | user_id        | Body         | Ya    | integer | id dari user yang melakuakan transaksi |
 | destination_id | Body         | Ya    | integer | id dari destinasi yang di sediakan|
@@ -367,8 +366,8 @@ body:
 
 ### Lihat Transacti User Login
 
-**Deskripsi**: Untuk mendapatkan semua transaksi dari user yang sedang login
-**URL**: `api/transaction/user-transaction`
+**Deskripsi**: Untuk mendapatkan semua transaksi dari user yang sedang login <br>
+**URL**: `api/transaction/user-transaction` <br>
 **Metode**: POST
 
 ```http
