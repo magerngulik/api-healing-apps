@@ -59,6 +59,7 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('location')->group(function () {
     Route::get('/getall', [LocationController::class, 'index']); 
+    Route::get('/get-country', [LocationController::class, 'getAllCountry']); 
 });
 
 Route::prefix('transaction')->group(function () {

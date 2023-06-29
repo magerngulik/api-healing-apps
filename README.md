@@ -429,7 +429,6 @@ GET /api/get-by-location-id
 | -------------- | ------------ | ----- | ------- | ---------------------------------------- |
 | country_id     | Header       | Ya    | int     | id dari tabel country                    |
 
-
 **Respons**
 - Kode Status 200: OK
 - Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
@@ -470,5 +469,57 @@ country_id: 1
     }
   ]
 }
+```
+
+### Get Country Name
+
+**Deskripsi**: Mengembalikan semua data country name, id dari sini nanti di gunakan untuk [select by country id](#get-transaksi-menggunakan-country-id)<br>
+**URL**: `/api/location/get-country` <br>
+**Metode**: GET
+
+```http
+GET /api/location/get-country
+```
+
+**Respons**
+- Kode Status 200: OK
+- Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
+**Contoh Penggunaa**
+```yaml
+GET /api/location/get-country
+```
+**Contoh Respons**:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Indonesia"
+  },
+  {
+    "id": 2,
+    "name": "Amerika"
+  },
+  {
+    "id": 3,
+    "name": "France"
+  },
+  {
+    "id": 4,
+    "name": "Nepal"
+  },
+  {
+    "id": 5,
+    "name": "Maldives"
+  },
+  {
+    "id": 6,
+    "name": "Kamboja"
+  },
+  {
+    "id": 7,
+    "name": "Polinesia Prancis"
+  }
+]
 ```
 
