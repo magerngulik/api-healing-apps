@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use App\Http\Resources\CountryResource;
 use App\Http\Resources\LocationResorce;
 
 class LocationController extends Controller
@@ -15,7 +16,7 @@ class LocationController extends Controller
     }
 
     public function getAllCountry(){
-        $county = Country::select('id', 'name')->get();
-        return response()->json($county, 200);
+        $county = Country::select('id', 'name','description','image')->get();
+        return CountryResource::collection($county);
     }
 }

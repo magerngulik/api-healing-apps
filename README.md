@@ -500,26 +500,6 @@ GET /api/location/get-country
     "id": 2,
     "name": "Amerika"
   },
-  {
-    "id": 3,
-    "name": "France"
-  },
-  {
-    "id": 4,
-    "name": "Nepal"
-  },
-  {
-    "id": 5,
-    "name": "Maldives"
-  },
-  {
-    "id": 6,
-    "name": "Kamboja"
-  },
-  {
-    "id": 7,
-    "name": "Polinesia Prancis"
-  }
 ]
 ```
 
