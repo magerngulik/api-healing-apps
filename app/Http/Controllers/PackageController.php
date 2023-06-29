@@ -34,6 +34,16 @@ class PackageController extends Controller
         return PackageResource::collection($data);
     }
 
+    public function getLocationByCountryId(Request $request){
+        $countryId = $request->query('country_id');
+        $data = Package::with('destination.location.country')
+        ->whereHas('destination.location.country', function ($query) use ($countryId) {
+            $query->where('id', $countryId);
+        })
+        ->get();
+        return PackageResource::collection($data);
+    }
+
     public function getDestination(){
         $data = [
             "data" => Destination::with('accommodation','package','location')->get()

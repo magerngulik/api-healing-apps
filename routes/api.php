@@ -47,6 +47,7 @@ Route::get('/itinerary', function () {
 Route::get('/active-package', [PackageController::class, 'getAllActivePackage']);
 Route::get('/serching-package', [PackageController::class, 'index']);
 Route::get('/destination', [PackageController::class, 'getDestination']);
+Route::get('/get-by-location-id', [PackageController::class, 'getLocationByCountryId']);
 
 
 Route::prefix('auth')->group(function () {
@@ -64,6 +65,9 @@ Route::prefix('transaction')->group(function () {
     Route::post('/add', [TransactionController::class, 'addtransaction'])->middleware('auth:sanctum'); 
     Route::get('/user-transaction', [TransactionController::class, 'usertransaction'])->middleware('auth:sanctum');  
 });
+
+
+
 
 
 

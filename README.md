@@ -364,14 +364,15 @@ body:
 }
 ```
 
-### Lihat Transacti User Login
+
+### Lihat Transaksi User Login
 
 **Deskripsi**: Untuk mendapatkan semua transaksi dari user yang sedang login <br>
 **URL**: `api/transaction/user-transaction` <br>
-**Metode**: POST
+**Metode**: GET
 
 ```http
-POST /api/transaction/user-transaction
+GET /api/transaction/user-transaction
 ```
 **Parameter**
 
@@ -387,7 +388,7 @@ POST /api/transaction/user-transaction
 
 **Contoh Penggunaa**
 ```yaml
-POST /api/transaction/user-transaction
+GET /api/transaction/user-transaction
 Headers:
 Accept: application/json
 Authorization: Bearer 11|RgOF6JXB5kx72Jp3DeUN7KpNfa4CPhDnGYP9LQJB
@@ -410,5 +411,64 @@ Authorization: Bearer 11|RgOF6JXB5kx72Jp3DeUN7KpNfa4CPhDnGYP9LQJB
     "updated_at": "2023-06-27T17:52:02.000000Z"
   },
 ]
+```
+
+
+### Get Transaksi menggunakan country id
+
+**Deskripsi**: Mengembalikan semua data berdasarkan country id, jadi data yang di kembalikan akan sesuai dengan negara yang di pilih<br>
+**URL**: `api/transaction/user-transaction` <br>
+**Metode**: GET
+
+```http
+GET /api/get-by-location-id
+```
+**Parameter**
+
+| Nama           | Inisialisasi | Wajib | Tipe    | Deskripsi                                |
+| -------------- | ------------ | ----- | ------- | ---------------------------------------- |
+| country_id     | Header       | Ya    | int     | id dari tabel country                    |
+
+
+**Respons**
+- Kode Status 200: OK
+- Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
+**Contoh Penggunaa**
+```yaml
+GET /api/transaction/user-transaction?country_id=1
+Headers:
+country_id: 1
+```
+**Contoh Respons**:
+
+```json
+{
+  "data": [
+    {
+      "id": 7,
+      "name": "Paket Liburan Romantis",
+      "description": "<p>Nikmati momen romantis bersama pasangan Anda dengan paket liburan ini. Dengan pemandangan yang indah dan akomodasi mewah, paket ini akan menciptakan kenangan tak terlupakan.</p>",
+      "price": 5000000,
+      "image": "http://healing-app.test/storage/packages/June2023/DlbeHqw4Z8lzx7Q10UMr.jpg",
+      "start_date": "2023-06-26",
+      "end_date": "2023-06-30",
+      "person": 2,
+      "destination": [
+        {
+          "name": "Pulau Maldives",
+          "description": "<p>Nikmati keindahan Pulau Maldives yang memukau dengan pasir putih, air laut yang jernih, dan vila-vila mewah menghadap lautan. Rasakan romansa yang memikat dengan pemandangan matahari terbenam yang spektakuler dan pengalaman menyelam bersama pasangan Anda</p>",
+          "image": "http://healing-app.test/storage/destinations/June2023/EhFWUKIh0UsOCQdhTyjL.jpg",
+          "location_name": "Maldives"
+        },
+        {
+          "name": "Labuan Bajo",
+          "description": "<p>Labuan Bajo adalah gerbang menuju Taman Nasional Komodo yang terkenal. Anda dapat menjelajahi pulau-pulau kecil di sekitar Labuan Bajo, melakukan snorkeling atau diving di perairan yang kaya akan kehidupan laut, dan menyaksikan matahari terbenam yang memukau.</p>",
+          "image": "http://healing-app.test/storage/destinations/June2023/4TvFsUdK5ta1ImfFN2uj.jpg",
+          "location_name": "Bali"
+        }
+      ]
+    }
+  ]
+}
 ```
 
