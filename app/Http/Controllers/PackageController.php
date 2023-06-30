@@ -27,7 +27,7 @@ class PackageController extends Controller
 
     public function getAllActivePackage(){
         $currentDate = Carbon::now();
-        $data = Package::with('destination')
+        $data = Package::with('destination','itinerary')
             ->whereDate('start_date', '<=', $currentDate)
             ->whereDate('end_date', '>=', $currentDate)
             ->get();

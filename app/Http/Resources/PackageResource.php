@@ -23,7 +23,9 @@ class PackageResource extends JsonResource
             "price"=> intval($this->price),
             "image"=> ImageHelper::convertImagePathToUrl($this->image),     
             "itinerary" => $this->whenLoaded('itinerary', function () {
-                return collect($this->itinerary)->map->only('day', 'description')->first();
+                return collect($this->itinerary)->map(function ($item) {
+                    return collect($item)->except(['created_at', 'updated_at']);
+                });
             }),
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
