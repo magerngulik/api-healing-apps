@@ -44,11 +44,4 @@ class PackageController extends Controller
         return PackageResource::collection($data);
     }
 
-    public function getDestination(){
-        $data = [
-            "data" => Destination::with('accommodation','package','location')->get()
-        ];
-        return  DestinationResource::collection($data);
-    }
-    
 }

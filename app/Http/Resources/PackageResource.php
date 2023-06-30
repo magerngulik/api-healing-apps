@@ -36,7 +36,6 @@ class PackageResource extends JsonResource
                         "name" => $item['name'],
                         "description" => $item['description'],
                         "image" => ImageHelper::convertImagePathToUrl($item['image']),
-                        // "location_id" => $item['location_id'],
                         "location_name" => $item['location']['name'],
                     ];
                 });

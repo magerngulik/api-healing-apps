@@ -12,6 +12,7 @@ use App\Http\Resources\PackageResource;
 use App\Http\Resources\ProductResource;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AuthentificationController;
 
@@ -46,8 +47,12 @@ Route::get('/itinerary', function () {
 
 Route::get('/active-package', [PackageController::class, 'getAllActivePackage']);
 Route::get('/serching-package', [PackageController::class, 'index']);
-Route::get('/destination', [PackageController::class, 'getDestination']);
 Route::get('/get-by-location-id', [PackageController::class, 'getLocationByCountryId']);
+
+Route::get('/destination', [DestinationController::class, 'index']);
+Route::get('/destination/{id}', [DestinationController::class, 'show']);
+
+
 
 
 Route::prefix('auth')->group(function () {

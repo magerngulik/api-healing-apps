@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Helpers\ImageHelper;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class DestinationResource extends JsonResource
@@ -14,43 +15,23 @@ class DestinationResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
-
-        //     {
-        //         "id": 5,
-        //         "name": "Pulau Maldives",
-        //         "description": "<p>Nikmati keindahan Pulau Maldives yang memukau dengan pasir putih, air laut yang jernih, dan vila-vila mewah menghadap lautan. Rasakan romansa yang memikat dengan pemandangan matahari terbenam yang spektakuler dan pengalaman menyelam bersama pasangan Anda</p>",
-        //         "created_at": "2023-06-24T05:15:36.000000Z",
-        //         "updated_at": "2023-06-26T11:17:43.000000Z",
-        //         "image": "destinations\\June2023\\EhFWUKIh0UsOCQdhTyjL.jpg",
-        //         "location_id": 30,
-        //         "rating": 4.9,
-        //         "accommodation": [],
-        //         "package": [
-        //           {
-        //             "id": 7,
-        //             "name": "Paket Liburan Romantis",
-        //             "description": "<p>Nikmati momen romantis bersama pasangan Anda dengan paket liburan ini. Dengan pemandangan yang indah dan akomodasi mewah, paket ini akan menciptakan kenangan tak terlupakan.</p>",
-        //             "price": "5000000",
-        //             "created_at": "2023-06-24T05:10:29.000000Z",
-        //             "updated_at": "2023-06-26T01:45:33.000000Z",
-        //             "image": "packages\\June2023\\DlbeHqw4Z8lzx7Q10UMr.jpg",
-        //             "start_date": "2023-06-26",
-        //             "end_date": "2023-06-30",
-        //             "max_capacity": 2,
-        //             "pivot": {
-        //               "destination_id": 5,
-        //               "package_id": 7
-        //             }
-        //           }
-        //         ],
-        //         "location": {
-        //           "id": 30,
-        //           "name": "Maldives",
-        //           "country_id": 5,
-        //           "city": "Maldives",
-        //           "created_at": "2023-06-25T14:38:10.000000Z",
-        //           "updated_at": "2023-06-25T14:38:10.000000Z"
-        //         }
+        // return parent::toArray($request);
+        return [
+            "id"=> $this->id,
+            "name"=> $this->name,
+            "description"=> $this->description,
+            "image"=>  ImageHelper::convertImagePathToUrl($this->image),
+            "location_id"=> $this->location_id,
+            "rating"=> $this->rating,
+            "accommodation"=>  $this->whenLoaded('accommodation', function () {
+                return collect($this->accommodation)->except(['created_at', 'updated_at']);
+            }),
+            "package"=> $this->whenLoaded('package', function () {
+                return collect($this->package)->except(['created_at', 'updated_at']);
+            }),
+            "location" => $this->whenLoaded('location', function () {
+                return collect($this->location)->except(['created_at', 'updated_at']);
+            }),
+        ];
     }
 }

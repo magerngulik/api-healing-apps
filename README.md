@@ -503,3 +503,143 @@ GET /api/location/get-country
 ]
 ```
 
+
+### Get Destination
+
+**Deskripsi**: Menampilkan semua destinasi<br>
+**URL**: `/api/destination` <br>
+**Metode**: GET
+
+```http
+GET /api/destination
+```
+
+**Respons**
+- Kode Status 200: OK
+- Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
+**Contoh Penggunaa**
+```yaml
+GET /api/destination
+```
+**Contoh Respons**:
+
+```json
+{
+  "data": [
+    {
+      "id": 5,
+      "name": "Pulau Maldives",
+      "description": "<p>Nikmati keindahan Pulau Maldives yang memukau dengan pasir putih, air laut yang jernih, dan vila-vila mewah menghadap lautan. Rasakan romansa yang memikat dengan pemandangan matahari terbenam yang spektakuler dan pengalaman menyelam bersama pasangan Anda</p>",
+      "image": "http://healing-app.test/storage/destinations/June2023/EhFWUKIh0UsOCQdhTyjL.jpg",
+      "location_id": 30,
+      "rating": 4.9,
+      "accommodation": [
+        {
+          "id": 8,
+          "name": "Hotel",
+          "description": "Penginapan yang nyaman di sekitaran pantai maldive",
+          "destination_id": 5,
+          "created_at": "2023-06-30T07:35:33.000000Z",
+          "updated_at": "2023-06-30T07:35:33.000000Z"
+        }
+      ],
+      "package": [
+        {
+          "id": 7,
+          "name": "Paket Liburan Romantis",
+          "description": "<p>Nikmati momen romantis bersama pasangan Anda dengan paket liburan ini. Dengan pemandangan yang indah dan akomodasi mewah, paket ini akan menciptakan kenangan tak terlupakan.</p>",
+          "price": "5000000",
+          "created_at": "2023-06-24T05:10:29.000000Z",
+          "updated_at": "2023-06-30T03:25:44.000000Z",
+          "image": "packages\\June2023\\DlbeHqw4Z8lzx7Q10UMr.jpg",
+          "start_date": "2023-06-26",
+          "end_date": "2023-06-30",
+          "max_capacity": 2,
+          "days": 5,
+          "pivot": {
+            "destination_id": 5,
+            "package_id": 7
+          }
+        }
+      ],
+      "location": {
+        "id": 30,
+        "name": "Maldives",
+        "country_id": 5,
+        "city": "Maldives"
+      }
+    },
+   
+  ]
+}
+```
+
+### Get Detai Destination
+
+**Deskripsi**: Menampilkan semua destinasi<br>
+**URL**: `/api/destination/5` <br>
+**Metode**: GET
+
+```http
+GET /api/destination/5
+```
+
+**Respons**
+- Kode Status 200: OK
+- Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
+**Contoh Penggunaa**
+```yaml
+GET /api/destination/5
+```
+**Contoh Respons**:
+
+```json
+{
+  "data": 
+    {
+      "id": 5,
+      "name": "Pulau Maldives",
+      "description": "<p>Nikmati keindahan Pulau Maldives yang memukau dengan pasir putih, air laut yang jernih, dan vila-vila mewah menghadap lautan. Rasakan romansa yang memikat dengan pemandangan matahari terbenam yang spektakuler dan pengalaman menyelam bersama pasangan Anda</p>",
+      "image": "http://healing-app.test/storage/destinations/June2023/EhFWUKIh0UsOCQdhTyjL.jpg",
+      "location_id": 30,
+      "rating": 4.9,
+      "accommodation": [
+        {
+          "id": 8,
+          "name": "Hotel",
+          "description": "Penginapan yang nyaman di sekitaran pantai maldive",
+          "destination_id": 5,
+          "created_at": "2023-06-30T07:35:33.000000Z",
+          "updated_at": "2023-06-30T07:35:33.000000Z"
+        }
+      ],
+      "package": [
+        {
+          "id": 7,
+          "name": "Paket Liburan Romantis",
+          "description": "<p>Nikmati momen romantis bersama pasangan Anda dengan paket liburan ini. Dengan pemandangan yang indah dan akomodasi mewah, paket ini akan menciptakan kenangan tak terlupakan.</p>",
+          "price": "5000000",
+          "created_at": "2023-06-24T05:10:29.000000Z",
+          "updated_at": "2023-06-30T03:25:44.000000Z",
+          "image": "packages\\June2023\\DlbeHqw4Z8lzx7Q10UMr.jpg",
+          "start_date": "2023-06-26",
+          "end_date": "2023-06-30",
+          "max_capacity": 2,
+          "days": 5,
+          "pivot": {
+            "destination_id": 5,
+            "package_id": 7
+          }
+        }
+      ],
+      "location": {
+        "id": 30,
+        "name": "Maldives",
+        "country_id": 5,
+        "city": "Maldives"
+      }
+    },
+
+}
+```
+
