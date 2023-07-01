@@ -31,7 +31,8 @@ class AuthentificationController extends Controller
                 'token' => $token,
                 "user"=> [
                             "id" => $user->id,
-                            "email" => $user->email ,
+                            "name" => $user->name,
+                            "email" => $user->email,
                             "avatar" => $avatarUrl 
                         ]],
         ], 200);

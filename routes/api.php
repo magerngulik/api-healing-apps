@@ -45,13 +45,14 @@ Route::get('/itinerary', function () {
     return response()->json($data, 200);
 });
 
-Route::get('/active-package', [PackageController::class, 'getAllActivePackage']);
 Route::get('/serching-package', [PackageController::class, 'index']);
 Route::get('/get-by-location-id', [PackageController::class, 'getLocationByCountryId']);
+Route::get('/active-package', [PackageController::class, 'getAllActivePackage']);
 
 Route::get('/destination', [DestinationController::class, 'index']);
 Route::get('/destination/{id}', [DestinationController::class, 'show']);
 
+Route::get('/active-package/{id}', [PackageController::class, 'serchingAllActivePackage']);
 
 
 

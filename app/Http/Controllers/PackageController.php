@@ -33,10 +33,20 @@ class PackageController extends Controller
             ->get();
         return PackageResource::collection($data);
     }
+    
+    public function serchingAllActivePackage(String $id){
+        $currentDate = Carbon::now();
+        $data = Package::with('destination', 'itinerary')
+                ->where('id', $id)
+                ->whereDate('start_date', '<=', $currentDate)
+                ->whereDate('end_date', '>=', $currentDate)
+                ->get();
+        return PackageResource::collection($data);
+    }
 
     public function getLocationByCountryId(Request $request){
         $countryId = $request->query('country_id');
-        $data = Package::with('destination.location.country')
+        $data = Package::with('destination.location.country','itinerary')
         ->whereHas('destination.location.country', function ($query) use ($countryId) {
             $query->where('id', $countryId);
         })

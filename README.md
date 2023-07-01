@@ -204,17 +204,62 @@ GET /api/active-package
 
 ```
 
+### Get Single Active Package
+**Deskripsi**: Untuk mendapatkan single package yang aktif
 
-### Searching Package
-
-**Deskripsi**: Untuk mendapatkan package yang masih aktif, filter ini berdasarkan data yang sudah di mulai dan belum berakhir
-
-**URL**: `api/active-package`
+**URL**: `api/active-package/{id}`
 
 **Metode**: GET
 
 ```http
-GET /api/active-package
+GET /api/active-package/10
+
+```
+**Contoh Respons**:
+
+```json
+{
+  "data": [
+    {
+      "id": 7,
+      "name": "Paket Liburan Romantis",
+      "description": "<p>Nikmati momen romantis bersama pasangan Anda dengan paket liburan ini. Dengan pemandangan yang indah dan akomodasi mewah, paket ini akan menciptakan kenangan tak terlupakan.</p>",
+      "price": 5000000,
+      "image": "http://healing-app.test/storage/packages/June2023/DlbeHqw4Z8lzx7Q10UMr.jpg",
+      "start_date": "2023-06-26",
+      "end_date": "2023-06-30",
+      "person": 2,
+      "destination": [
+        {
+          "name": "Pulau Maldives",
+          "description": "<p>Nikmati keindahan Pulau Maldives yang memukau dengan pasir putih, air laut yang jernih, dan vila-vila mewah menghadap lautan. Rasakan romansa yang memikat dengan pemandangan matahari terbenam yang spektakuler dan pengalaman menyelam bersama pasangan Anda</p>",
+          "image": "http://healing-app.test/storage/destinations/June2023/EhFWUKIh0UsOCQdhTyjL.jpg",
+          "location_name": "Maldives"
+        },
+        {
+          "name": "Labuan Bajo",
+          "description": "<p>Labuan Bajo adalah gerbang menuju Taman Nasional Komodo yang terkenal. Anda dapat menjelajahi pulau-pulau kecil di sekitar Labuan Bajo, melakukan snorkeling atau diving di perairan yang kaya akan kehidupan laut, dan menyaksikan matahari terbenam yang memukau.</p>",
+          "image": "http://healing-app.test/storage/destinations/June2023/4TvFsUdK5ta1ImfFN2uj.jpg",
+          "location_name": "Bali"
+        }
+      ]
+    },
+  ]
+}
+
+```
+
+
+### Searching Package
+
+**Deskripsi**: Untuk mendapatkan package yang sesuai tiga parameter di bawah
+
+**URL**: `/api/serching-package?start_date=2023-06-25&max_capacity=2&location_id=30`
+
+**Metode**: GET
+
+```http
+GET /api/serching-package?start_date=2023-06-25&max_capacity=2&location_id=30
 ```
 **Parameter**
 
@@ -226,12 +271,12 @@ GET /api/active-package
 
 **Respons**
 - Kode Status 200: OK. Data berhasil ditemukan.
-<!-- - Kode Status 401: Unauthorized. Token otorisasi tidak valid. -->
+
 - Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
 
 **Contoh Penggunaa**
 ```yaml
-GET /api/active-package
+GET /api/serching-package?start_date=2023-06-25&max_capacity=2&location_id=30
 Headers:
   start_date: 2022-01-15
   max_capacity: 6
