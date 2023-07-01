@@ -20,41 +20,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('product/', function () {
-  
-    return ProductResource::collection(Product::all());
-});
-
-
-
-Route::get('/package', function () {
-    return PackageResource::collection(Package::with('destination')->get());
-});
-
-Route::get('package/{id}', function ($id) {
-    $query = Package::with('itinerary','destination')
-    ->where('id', $id)
-    ->get();    
-    return PackageResource::collection($query);
-});
-
-Route::get('/itinerary', function () {
-    $data = [
-        "data" => Itinerary::with('package')->get()
-    ];
-    return response()->json($data, 200);
-});
-
 Route::get('/serching-package', [PackageController::class, 'index']);
 Route::get('/get-by-location-id', [PackageController::class, 'getLocationByCountryId']);
-Route::get('/active-package', [PackageController::class, 'getAllActivePackage']);
 
 Route::get('/destination', [DestinationController::class, 'index']);
 Route::get('/destination/{id}', [DestinationController::class, 'show']);
-
+Route::get('/active-package', [PackageController::class, 'getAllActivePackage']);
 Route::get('/active-package/{id}', [PackageController::class, 'serchingAllActivePackage']);
-
-
 
 Route::prefix('auth')->group(function () {
     Route::post('/login', [AuthentificationController::class, 'login']);
@@ -74,6 +46,29 @@ Route::prefix('transaction')->group(function () {
 });
 
 
+
+// Route::get('product/', function () {
+  
+//     return ProductResource::collection(Product::all());
+// });
+
+// Route::get('/package', function () {
+//     return PackageResource::collection(Package::with('destination')->get());
+// });
+
+// Route::get('package/{id}', function ($id) {
+//     $query = Package::with('itinerary','destination')
+//     ->where('id', $id)
+//     ->get();    
+//     return PackageResource::collection($query);
+// });
+
+// Route::get('/itinerary', function () {
+//     $data = [
+//         "data" => Itinerary::with('package')->get()
+//     ];
+//     return response()->json($data, 200);
+// });
 
 
 
