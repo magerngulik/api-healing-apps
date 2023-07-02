@@ -620,7 +620,7 @@ GET /api/destination
 }
 ```
 
-### Get Detai Destination
+### Get Detail Destination
 
 **Deskripsi**: Menampilkan semua destinasi<br>
 **URL**: `/api/destination/5` <br>
