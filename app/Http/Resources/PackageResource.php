@@ -20,6 +20,7 @@ class PackageResource extends JsonResource
             'id' => $this->id,
             "name"=> $this->name,
             "description"=> $this->description,
+            "days"=> $this->days,
             "price"=> intval($this->price),
             "image"=> ImageHelper::convertImagePathToUrl($this->image),     
             "itinerary" => $this->whenLoaded('itinerary', function () {
@@ -33,6 +34,7 @@ class PackageResource extends JsonResource
             "destination" => $this->whenLoaded('destination',function(){
                 return collect($this->destination)->map(function ($item) {
                     return [
+                        "id" => $item['id'],
                         "name" => $item['name'],
                         "description" => $item['description'],
                         "image" => ImageHelper::convertImagePathToUrl($item['image']),

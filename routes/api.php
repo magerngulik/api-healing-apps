@@ -32,7 +32,7 @@ Route::prefix('auth')->group(function () {
     Route::post('/login', [AuthentificationController::class, 'login']);
     Route::post('/register', [AuthentificationController::class, 'register']);    
     Route::get('/logout', [AuthentificationController::class, 'logout'])->middleware('auth:sanctum'); 
-    Route::get('/me', [AuthentificationController::class, 'me'])->middleware('auth:sanctum'); 
+    Route::get('/profile', [AuthentificationController::class, 'me'])->middleware('auth:sanctum'); 
 });
 
 Route::prefix('location')->group(function () {
@@ -44,33 +44,6 @@ Route::prefix('transaction')->group(function () {
     Route::post('/add', [TransactionController::class, 'addtransaction'])->middleware('auth:sanctum'); 
     Route::get('/user-transaction', [TransactionController::class, 'usertransaction'])->middleware('auth:sanctum');  
 });
-
-
-
-// Route::get('product/', function () {
-  
-//     return ProductResource::collection(Product::all());
-// });
-
-// Route::get('/package', function () {
-//     return PackageResource::collection(Package::with('destination')->get());
-// });
-
-// Route::get('package/{id}', function ($id) {
-//     $query = Package::with('itinerary','destination')
-//     ->where('id', $id)
-//     ->get();    
-//     return PackageResource::collection($query);
-// });
-
-// Route::get('/itinerary', function () {
-//     $data = [
-//         "data" => Itinerary::with('package')->get()
-//     ];
-//     return response()->json($data, 200);
-// });
-
-
 
 
 
