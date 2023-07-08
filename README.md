@@ -168,7 +168,7 @@ Authorization: Bearer {token}
 **Metode**: GET
 
 ```http
-GET /api/active-package
+GET /api/package/active
 ```
 **Contoh Respons**:
 
@@ -212,7 +212,7 @@ GET /api/active-package
 **Metode**: GET
 
 ```http
-GET /api/active-package/10
+GET /api/package/active/10
 
 ```
 **Contoh Respons**:
@@ -254,12 +254,12 @@ GET /api/active-package/10
 
 **Deskripsi**: Untuk mendapatkan package yang sesuai tiga parameter di bawah
 
-**URL**: `/api/serching-package?start_date=2023-06-25&max_capacity=2&location_id=30`
+**URL**: `/api/package/serching?start_date=2023-06-25&max_capacity=2&location_id=30`
 
 **Metode**: GET
 
 ```http
-GET /api/serching-package?start_date=2023-06-25&max_capacity=2&location_id=30
+GET /api/package/serching?start_date=2023-06-25&max_capacity=2&location_id=30
 ```
 **Parameter**
 
@@ -276,7 +276,7 @@ GET /api/serching-package?start_date=2023-06-25&max_capacity=2&location_id=30
 
 **Contoh Penggunaa**
 ```yaml
-GET /api/serching-package?start_date=2023-06-25&max_capacity=2&location_id=30
+GET /api/package/serching?start_date=2023-06-25&max_capacity=2&location_id=30
 Headers:
   start_date: 2022-01-15
   max_capacity: 6
@@ -373,6 +373,174 @@ country_id: 1
   ]
 }
 ```
+
+
+### Get package menggunakan people
+
+**Deskripsi**: Mengembalikan semua data berdasarkan jumlah people<br>
+**URL**: `api/transaction/user-transaction` <br>
+**Metode**: GET
+
+```http
+GET /api/package/people/2
+```
+**Parameter**
+
+| Nama           | Inisialisasi | Wajib | Tipe    | Deskripsi                                |
+| -------------- | ------------ | ----- | ------- | ---------------------------------------- |
+| people     | Url       | Ya    | int     | jumlah dari people                    |
+
+**Respons**
+- Kode Status 200: OK
+- Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
+**Contoh Penggunaa**
+```yaml
+GET /api/package/people/2
+Headers:
+country_id: 1
+```
+**Contoh Respons**:
+
+```json
+{
+  "data": [
+    {
+      "id": 7,
+      "name": "Paket Liburan Romantis",
+      "description": "<p>Nikmati momen romantis bersama pasangan Anda dengan paket liburan ini. Dengan pemandangan yang indah dan akomodasi mewah, paket ini akan menciptakan kenangan tak terlupakan.</p>",
+      "price": 5000000,
+      "image": "http://healing-app.test/storage/packages/June2023/DlbeHqw4Z8lzx7Q10UMr.jpg",
+      "start_date": "2023-06-26",
+      "end_date": "2023-06-30",
+      "person": 2,
+      "destination": [
+        {
+          "name": "Pulau Maldives",
+          "description": "<p>Nikmati keindahan Pulau Maldives yang memukau dengan pasir putih, air laut yang jernih, dan vila-vila mewah menghadap lautan. Rasakan romansa yang memikat dengan pemandangan matahari terbenam yang spektakuler dan pengalaman menyelam bersama pasangan Anda</p>",
+          "image": "http://healing-app.test/storage/destinations/June2023/EhFWUKIh0UsOCQdhTyjL.jpg",
+          "location_name": "Maldives"
+        },
+        {
+          "name": "Labuan Bajo",
+          "description": "<p>Labuan Bajo adalah gerbang menuju Taman Nasional Komodo yang terkenal. Anda dapat menjelajahi pulau-pulau kecil di sekitar Labuan Bajo, melakukan snorkeling atau diving di perairan yang kaya akan kehidupan laut, dan menyaksikan matahari terbenam yang memukau.</p>",
+          "image": "http://healing-app.test/storage/destinations/June2023/4TvFsUdK5ta1ImfFN2uj.jpg",
+          "location_name": "Bali"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Get package menggunakan destination id
+
+**Deskripsi**: Mengembalikan semua data berdasarkan id destinatsi<br>
+**URL**: `api/transaction/user-transaction` <br>
+**Metode**: GET
+
+```http
+GET /api/package/destination/7
+```
+**Parameter**
+
+| Nama           | Inisialisasi | Wajib | Tipe    | Deskripsi                                |
+| -------------- | ------------ | ----- | ------- | ---------------------------------------- |
+| id     | Url       | Ya    | int     | id destinasi                    |
+
+**Respons**
+- Kode Status 200: OK
+- Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
+**Contoh Penggunaa**
+```yaml
+GET /api/package/destination/7
+Headers:
+country_id: 1
+```
+**Contoh Respons**:
+
+```json
+{
+  "data": [
+    {
+      "id": 9,
+      "name": "Paket Liburan Keluarga",
+      "description": "<p>Jadikan waktu bersama keluarga lebih istimewa dengan paket liburan ini. Dengan berbagai fasilitas dan kegiatan yang ramah keluarga, paket ini akan memberikan kegembiraan kepada seluruh anggota keluarga</p>",
+      "days": 3,
+      "price": 4000000,
+      "image": "http://healing-app.test/storage/packages/June2023/QzI0dY5IqR1qtEyIvtxq.jpg",
+      "start_date": "2023-07-08",
+      "end_date": "2023-07-31",
+      "person": 5,
+      "destination": [
+        {
+          "id": 7,
+          "name": "Paris",
+          "description": "<p>Deskripsi: Disneyland Paris adalah taman hiburan yang menyenangkan bagi seluruh keluarga. Dengan berbagai atraksi dan wahana yang menarik, pertunjukan karakter Disney, dan suasana magis yang tak tertandingi, destinasi ini menawarkan kesenangan dan kegembiraan bagi anak-anak dan orang dewasa. Nikmati petualangan dengan karakter favorit Disney dan buat kenangan yang indah bersama keluarga Anda.</p>",
+          "image": "http://healing-app.test/storage/destinations/June2023/8jTUcypo6xY2leCQTBuE.webp",
+          "location_name": "Paris"
+        }
+      ]
+    }
+  ]
+}
+```
+
+
+
+### Get package menggunakan jumlah people dan destination id
+
+**Deskripsi**: Mengembalikan semua data berdasarkan id destinatsi<br>
+**URL**: `api/transaction/user-transaction` <br>
+**Metode**: GET
+
+```http
+GET /api/package/peopledestinatin/?people=5&destination_id=7
+```
+**Parameter**
+
+| Nama           | Inisialisasi | Wajib | Tipe    | Deskripsi                                |
+| -------------- | ------------ | ----- | ------- | ---------------------------------------- |
+| destination_id     | Header       | Ya    | int     | id destinasi                    |
+| people     | Header       | Ya    | int     | id destinasi                    |
+
+**Respons**
+- Kode Status 200: OK
+- Kode Status 500: Server Error. Terjadi kesalahan saat memproses permintaan.
+**Contoh Penggunaa**
+```yaml
+GET /api/package/peopledestinatin/?people=5&destination_id=7
+Headers:
+country_id: 1
+```
+**Contoh Respons**:
+
+```json
+{
+  "data": [
+    {
+      "id": 9,
+      "name": "Paket Liburan Keluarga",
+      "description": "<p>Jadikan waktu bersama keluarga lebih istimewa dengan paket liburan ini. Dengan berbagai fasilitas dan kegiatan yang ramah keluarga, paket ini akan memberikan kegembiraan kepada seluruh anggota keluarga</p>",
+      "days": 3,
+      "price": 4000000,
+      "image": "http://healing-app.test/storage/packages/June2023/QzI0dY5IqR1qtEyIvtxq.jpg",
+      "start_date": "2023-07-08",
+      "end_date": "2023-07-31",
+      "person": 5,
+      "destination": [
+        {
+          "id": 7,
+          "name": "Paris",
+          "description": "<p>Deskripsi: Disneyland Paris adalah taman hiburan yang menyenangkan bagi seluruh keluarga. Dengan berbagai atraksi dan wahana yang menarik, pertunjukan karakter Disney, dan suasana magis yang tak tertandingi, destinasi ini menawarkan kesenangan dan kegembiraan bagi anak-anak dan orang dewasa. Nikmati petualangan dengan karakter favorit Disney dan buat kenangan yang indah bersama keluarga Anda.</p>",
+          "image": "http://healing-app.test/storage/destinations/June2023/8jTUcypo6xY2leCQTBuE.webp",
+          "location_name": "Paris"
+        }
+      ]
+    }
+  ]
+}
+```
+
 
 ## Location
 ### Get All Location

@@ -20,13 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/serching-package', [PackageController::class, 'index']);
+
 Route::get('/get-by-location-id', [PackageController::class, 'getLocationByCountryId']);
 
 Route::get('/destination', [DestinationController::class, 'index']);
 Route::get('/destination/{id}', [DestinationController::class, 'show']);
-Route::get('/active-package', [PackageController::class, 'getAllActivePackage']);
-Route::get('/active-package/{id}', [PackageController::class, 'serchingAllActivePackage']);
 
 Route::prefix('auth')->group(function () {
     Route::post('/login', [AuthentificationController::class, 'login']);
@@ -43,6 +41,16 @@ Route::prefix('location')->group(function () {
 Route::prefix('transaction')->group(function () {
     Route::post('/add', [TransactionController::class, 'addtransaction'])->middleware('auth:sanctum'); 
     Route::get('/user-transaction', [TransactionController::class, 'usertransaction'])->middleware('auth:sanctum');  
+});
+
+Route::prefix('package')->group(function () {
+    Route::get('/active', [PackageController::class, 'getAllActivePackage']);
+    Route::get('/active/{id}', [PackageController::class, 'serchingAllActivePackage']);        
+    Route::get('/people/{people}', [PackageController::class, 'people']);        
+    Route::get('/destination/{destination}', [PackageController::class, 'destination']);        
+    Route::get('/peopledestinatin', [PackageController::class, 'destinationPeople']);        
+    Route::get('/serching', [PackageController::class, 'index']);
+    Route::get('/location-id', [PackageController::class, 'getLocationByCountryId']);
 });
 
 
