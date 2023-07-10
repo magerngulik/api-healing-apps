@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2023 at 12:40 PM
+-- Generation Time: Jul 10, 2023 at 05:51 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -31,7 +31,6 @@ CREATE TABLE `accommodations` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` text DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `price_per_night` decimal(10,0) DEFAULT NULL,
   `destination_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -41,8 +40,14 @@ CREATE TABLE `accommodations` (
 -- Dumping data for table `accommodations`
 --
 
-INSERT INTO `accommodations` (`id`, `name`, `description`, `price_per_night`, `destination_id`, `created_at`, `updated_at`) VALUES
-(4, 'Taman Gondola', 'Berkeliling Taman Impian Jaya Ancol dengan gondola Nikmati indahnya panorama Teluk Jakarta dari ketinggian 21 meter Turun di Pantai Festival atau Teater Mobil dan jalan kaki ke berbagai tempat rekreasi Masuk dengan mudah menggunakan E-voucher Traveloka Anda', 50000, 3, '2023-06-23 08:58:20', '2023-06-23 08:58:20');
+INSERT INTO `accommodations` (`id`, `name`, `description`, `destination_id`, `created_at`, `updated_at`) VALUES
+(5, 'Eiffel Tower Hotel', 'A luxurious hotel near the Eiffel Tower', 7, '2023-06-30 00:16:34', '2023-06-30 00:16:34'),
+(6, 'Transportasi', 'Transportasi ke Kuil Angkor Wat', 9, '2023-06-30 00:30:23', '2023-06-30 00:30:23'),
+(7, 'Hotel', 'Menginap di hotel nyaman di sekitaran Kuil Angkor Wat', 9, '2023-06-30 00:31:00', '2023-06-30 00:31:00'),
+(8, 'Hotel', 'Penginapan yang nyaman di sekitaran pantai maldive', 5, '2023-06-30 00:35:33', '2023-06-30 00:35:33'),
+(9, 'Tour Guide', 'Tour Guide Propesional', 6, '2023-06-30 00:36:01', '2023-06-30 00:36:01'),
+(10, 'Penginapan di tepi pantai', 'Penginapan yang nyaman di sekitaran Pantai Bora Bora', 8, '2023-06-30 00:45:00', '2023-06-30 00:45:00'),
+(11, 'Transportasi dari Bandara', 'Penjemputan tamu dari bandara', 11, '2023-06-30 01:51:34', '2023-06-30 01:51:34');
 
 -- --------------------------------------------------------
 
@@ -78,21 +83,23 @@ CREATE TABLE `countries` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `image` text DEFAULT NULL,
+  `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `countries`
 --
 
-INSERT INTO `countries` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Indonesia', '2023-06-25 07:05:41', '2023-06-25 07:05:41'),
-(2, 'Amerika', '2023-06-25 07:06:04', '2023-06-25 07:06:04'),
-(3, 'France', '2023-06-25 07:07:52', '2023-06-25 07:07:52'),
-(4, 'Nepal', '2023-06-25 07:34:57', '2023-06-25 07:34:57'),
-(5, 'Maldives', '2023-06-25 07:37:56', '2023-06-25 07:37:56'),
-(6, 'Kamboja', '2023-06-25 07:40:08', '2023-06-25 07:40:08'),
-(7, 'Polinesia Prancis', '2023-06-25 07:43:14', '2023-06-25 07:43:14');
+INSERT INTO `countries` (`id`, `name`, `created_at`, `updated_at`, `image`, `description`) VALUES
+(1, 'Indonesia', '2023-06-25 07:05:41', '2023-06-29 02:49:41', 'countries\\June2023\\UAJeRc67g3vuBT4MLS5i.jpeg', 'Nikmati liburan seru di Indonesia, negeri dengan kekayaan alam dan budaya yang tak terbatas. Menikmati matahari terbenam di pantai Bali, menjelajahi hutan tropis Kalimantan, atau menyelam di perairan Kepulauan Raja Ampat. Temukan keindahan alam yang memukau, kuliner lezat, dan keramahan penduduk setempat yang hangat.'),
+(2, 'Amerika', '2023-06-25 07:06:04', '2023-06-29 03:01:27', 'countries\\June2023\\FHVPiIdMiry7zQfVtY65.jpg', 'Jelajahi keindahan dan keanekaragaman Amerika, negara yang menawarkan berbagai macam pengalaman. Dari keramaian New York City hingga keindahan alam Grand Canyon dan Yosemite National Park. Menjelajahi kota-kota seperti San Francisco, Las Vegas, atau Los Angeles, dan mengeksplorasi taman nasional yang menakjubkan seperti Yellowstone dan Great Smoky Mountains. Amerika menawarkan petualangan dan liburan yang tak terlupakan bagi setiap pengunjung.'),
+(3, 'France', '2023-06-25 07:07:52', '2023-06-29 02:50:40', 'countries\\June2023\\VhfYvzOzxeA1OIKqCkbV.jpg', 'Jelajahi pesona Prancis, negara yang dikenal dengan arsitektur klasiknya, seni, dan masakan yang lezat. Berkeliling di Paris, mengunjungi Menara Eiffel, Louvre, dan Notre-Dame. Menikmati anggur di Provence, mengeksplorasi pantai Mediterania yang mempesona, atau menjelajahi desa-desa cantik di pedesaan Prancis. Dalam perjalanan ini, Anda akan terpesona oleh keindahan dan pesona yang tak terlupakan.'),
+(4, 'Nepal', '2023-06-25 07:34:57', '2023-06-29 02:54:05', 'countries\\June2023\\FU0ZAWSiwxzND6NZyJme.jpg', 'Berkeliaran di Nepal akan membawa Anda ke dataran tinggi Himalaya yang memukau. Mendaki ke Puncak Everest, titik tertinggi di dunia, menjadi mimpi petualangan bagi banyak orang. Menikmati keindahan pegunungan, menjelajahi lembah Kathmandu yang kaya akan budaya dan sejarah, atau mengunjungi Kuil Pashupatinath yang suci, akan membuat liburan Anda di Nepal menjadi tak terlupakan.'),
+(5, 'Maldives', '2023-06-25 07:37:56', '2023-06-29 02:58:13', 'countries\\June2023\\Aqh5dIo8CvgYLfhJtYCJ.webp', 'Hadiri liburan mewah di Maladewa, surga tropis yang terkenal dengan keindahan pantainya. Nikmati bungalow mengapung di atas air, menjelajahi terumbu karang yang memukau dengan menyelam atau snorkeling, atau hanya bersantai di pantai pasir putih yang indah. Dalam perjalanan ini, Anda akan merasa damai dan terhubung dengan keajaiban alam yang menakjubkan.'),
+(6, 'Kamboja', '2023-06-25 07:40:08', '2023-06-29 02:55:44', 'countries\\June2023\\iF9MqYNOwbmpDoV53cWo.jpg', 'Liburan di Kamboja akan membawa Anda ke dunia sejarah yang menakjubkan. Mengunjungi Angkor Wat, kuil kuno yang menjadi salah satu keajaiban dunia, adalah pengalaman yang luar biasa. Menyaksikan matahari terbit di atas kompleks kuil yang megah, menjelajahi pasar lokal, atau menikmati keindahan pantai Koh Rong, akan melengkapi petualangan Anda di negara ini.'),
+(7, 'Polinesia Prancis', '2023-06-25 07:43:14', '2023-06-29 03:00:21', 'countries\\June2023\\LW6NcYoQsNgORnGCg2aK.jpg', 'Nikmati liburan eksotis yang mengagumkan di Polinesia Prancis, destinasi tropis yang memikat dengan pantai berpasir putih, air laut biru jernih, dan terumbu karang yang memukau. Jelajahi pulau-pulau indah seperti Bora Bora, Tahiti, dan Moorea, temukan budaya Polinesia yang kaya, dan nikmati kegiatan seperti snorkeling, menyelam, atau berenang bersama hiu paus. Polinesia Prancis adalah tempat yang sempurna untuk melarikan diri dan menikmati keindahan alam yang luar biasa');
 
 -- --------------------------------------------------------
 
@@ -186,7 +193,6 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (82, 21, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (83, 21, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
 (84, 21, 'description', 'text', 'Description', 0, 1, 1, 1, 1, 1, '{}', 3),
-(85, 21, 'price_per_night', 'number', 'Price Per Night', 0, 1, 1, 1, 1, 1, '{}', 4),
 (86, 21, 'destination_id', 'text', 'Destination Id', 0, 1, 1, 1, 1, 1, '{}', 5),
 (87, 21, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6),
 (88, 21, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
@@ -199,13 +205,6 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (116, 26, 'destination_hasmany_accommodation_relationship', 'relationship', 'accommodations', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Accommodation\",\"table\":\"accommodations\",\"type\":\"hasMany\",\"column\":\"destination_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"accommodations\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
 (119, 26, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 2),
 (121, 26, 'destination_belongstomany_package_relationship', 'relationship', 'packages', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Package\",\"table\":\"packages\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"package_destinations\",\"pivot\":\"1\",\"taggable\":\"0\"}', 10),
-(124, 28, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(125, 28, 'day', 'text', 'Day', 0, 1, 1, 1, 1, 1, '{}', 2),
-(126, 28, 'description', 'text', 'Description', 0, 1, 1, 1, 1, 1, '{}', 3),
-(127, 28, 'destination_id', 'text', 'Destination Id', 0, 1, 1, 1, 1, 1, '{}', 4),
-(128, 28, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 5),
-(129, 28, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
-(130, 28, 'itinerary_belongsto_destination_relationship', 'relationship', 'destinations', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Destination\",\"table\":\"destinations\",\"type\":\"belongsTo\",\"column\":\"destination_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"accommodations\",\"pivot\":\"0\",\"taggable\":null}', 7),
 (131, 30, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (132, 30, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 3),
 (133, 30, 'description', 'rich_text_box', 'Description', 0, 1, 1, 1, 1, 1, '{}', 4),
@@ -217,9 +216,9 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (139, 30, 'end_date', 'date', 'End Date', 0, 1, 1, 1, 1, 1, '{}', 7),
 (140, 30, 'max_capacity', 'number', 'Max Capacity', 0, 1, 1, 1, 1, 1, '{}', 8),
 (141, 32, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(142, 32, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
-(143, 32, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 3),
-(144, 32, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 4),
+(142, 32, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 3),
+(143, 32, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(144, 32, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
 (145, 33, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (146, 33, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
 (147, 33, 'country_id', 'text', 'Country Id', 0, 1, 1, 1, 1, 1, '{}', 3),
@@ -227,10 +226,10 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (149, 33, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 5),
 (150, 33, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
 (151, 33, 'location_belongsto_country_relationship', 'relationship', 'countries', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Country\",\"table\":\"countries\",\"type\":\"belongsTo\",\"column\":\"country_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"accommodations\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
-(152, 32, 'country_hasmany_location_relationship', 'relationship', 'locations', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Location\",\"table\":\"locations\",\"type\":\"hasMany\",\"column\":\"country_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"accommodations\",\"pivot\":\"0\",\"taggable\":null}', 5),
+(152, 32, 'country_hasmany_location_relationship', 'relationship', 'locations', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Location\",\"table\":\"locations\",\"type\":\"hasMany\",\"column\":\"country_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"accommodations\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
 (153, 26, 'destination_belongsto_location_relationship', 'relationship', 'locations', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Location\",\"table\":\"locations\",\"type\":\"belongsTo\",\"column\":\"location_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"accommodations\",\"pivot\":\"0\",\"taggable\":\"0\"}', 11),
 (154, 26, 'location_id', 'text', 'Location Id', 0, 1, 1, 1, 1, 1, '{}', 7),
-(155, 30, 'package_belongstomany_destination_relationship', 'relationship', 'destinations', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Destination\",\"table\":\"destinations\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"package_destinations\",\"pivot\":\"1\",\"taggable\":null}', 11),
+(155, 30, 'package_belongstomany_destination_relationship', 'relationship', 'destinations', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Destination\",\"table\":\"destinations\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"package_destinations\",\"pivot\":\"1\",\"taggable\":\"0\"}', 12),
 (156, 26, 'rating', 'number', 'Rating', 0, 1, 1, 1, 1, 1, '{}', 6),
 (157, 36, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (158, 36, 'package_id', 'text', 'Package Id', 0, 1, 1, 1, 1, 1, '{}', 2),
@@ -245,7 +244,21 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (167, 36, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 11),
 (168, 36, 'transaction_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"user_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"accommodations\",\"pivot\":\"0\",\"taggable\":\"0\"}', 12),
 (169, 36, 'transaction_belongsto_package_relationship', 'relationship', 'packages', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Package\",\"table\":\"packages\",\"type\":\"belongsTo\",\"column\":\"package_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"accommodations\",\"pivot\":\"0\",\"taggable\":\"0\"}', 13),
-(170, 36, 'transaction_belongsto_destination_relationship', 'relationship', 'destinations', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Destination\",\"table\":\"destinations\",\"type\":\"belongsTo\",\"column\":\"destination_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"accommodations\",\"pivot\":\"0\",\"taggable\":\"0\"}', 14);
+(170, 36, 'transaction_belongsto_destination_relationship', 'relationship', 'destinations', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Destination\",\"table\":\"destinations\",\"type\":\"belongsTo\",\"column\":\"destination_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"accommodations\",\"pivot\":\"0\",\"taggable\":\"0\"}', 14),
+(171, 32, 'image', 'image', 'Image', 0, 1, 1, 1, 1, 1, '{}', 2),
+(172, 32, 'description', 'text_area', 'Description', 0, 1, 1, 1, 1, 1, '{}', 4),
+(174, 37, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(175, 37, 'package_id', 'text', 'Package Id', 0, 1, 1, 1, 1, 1, '{}', 7),
+(176, 37, 'waktu_mulai', 'time', 'Waktu Mulai', 0, 1, 1, 1, 1, 1, '{}', 5),
+(177, 37, 'waktu_selesai', 'time', 'Waktu Selesai', 0, 1, 1, 1, 1, 1, '{}', 6),
+(178, 37, 'destinasi', 'text', 'Destinasi', 0, 1, 1, 1, 1, 1, '{}', 3),
+(180, 37, 'aktifitas', 'text', 'Aktifitas', 0, 1, 1, 1, 1, 1, '{}', 4),
+(181, 37, 'itinerary_belongsto_package_relationship', 'relationship', 'packages', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Package\",\"table\":\"packages\",\"type\":\"belongsTo\",\"column\":\"package_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"accommodations\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8),
+(182, 30, 'package_hasmany_itinerary_relationship', 'relationship', 'itineraries', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Itinerary\",\"table\":\"itineraries\",\"type\":\"hasMany\",\"column\":\"package_id\",\"key\":\"id\",\"label\":\"destinasi\",\"pivot_table\":\"accommodations\",\"pivot\":\"0\",\"taggable\":\"0\"}', 13),
+(183, 30, 'days', 'number', 'Days', 0, 1, 1, 1, 1, 1, '{}', 11),
+(184, 37, 'hari', 'select_dropdown', 'Hari', 0, 1, 1, 1, 1, 1, '{\"default\":\"hari pertama\",\"options\":{\"hari pertama\":\"hari petama\",\"hari kedua\":\"hari kedua\",\"hari ketiga\":\"hari ketiga\",\"hari keempat\":\"hari keempat\",\"hari kelima\":\"hari kelima\",\"hari keenam\":\"hari keenam\",\"hari ketujuh\":\"hari ketujuh\"}}', 2),
+(185, 37, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 9),
+(186, 37, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 10);
 
 -- --------------------------------------------------------
 
@@ -284,13 +297,13 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2023-06-21 22:43:56', '2023-06-21 22:43:56'),
 (10, 'product', 'product', 'Product', 'Products', NULL, 'App\\Models\\Product', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2023-06-21 22:55:47', '2023-06-21 22:55:47'),
 (13, 'products', 'products', 'Product', 'Products', 'voyager-params', 'App\\Models\\Product', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-06-21 23:12:42', '2023-06-21 23:17:24'),
-(21, 'accommodations', 'accommodations', 'Accommodation', 'Accommodations', NULL, 'App\\Models\\Accommodation', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-06-22 02:24:21', '2023-06-23 08:46:21'),
+(21, 'accommodations', 'accommodations', 'Accommodation', 'Accommodations', NULL, 'App\\Models\\Accommodation', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-06-22 02:24:21', '2023-06-30 00:12:40'),
 (26, 'destinations', 'destinations', 'Destination', 'Destinations', NULL, 'App\\Models\\Destination', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-06-23 07:28:04', '2023-06-26 04:16:26'),
-(28, 'itineraries', 'itineraries', 'Itinerary', 'Itineraries', NULL, 'App\\Models\\Itinerary', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2023-06-24 21:58:54', '2023-06-24 21:58:54'),
-(30, 'packages', 'packages', 'Package', 'Packages', NULL, 'App\\Models\\Package', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-06-24 22:17:11', '2023-06-24 22:19:41'),
-(32, 'countries', 'countries', 'Country', 'Countries', NULL, 'App\\Models\\Country', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2023-06-25 07:00:56', '2023-06-25 07:00:56'),
+(30, 'packages', 'packages', 'Package', 'Packages', NULL, 'App\\Models\\Package', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-06-24 22:17:11', '2023-06-29 20:27:16'),
+(32, 'countries', 'countries', 'Country', 'Countries', NULL, 'App\\Models\\Country', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-06-25 07:00:56', '2023-06-29 02:39:47'),
 (33, 'locations', 'locations', 'Location', 'Locations', NULL, 'App\\Models\\Location', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-06-25 07:02:13', '2023-06-25 07:03:38'),
-(36, 'transactions', 'transactions', 'Transaction', 'Transactions', NULL, 'App\\Models\\Transaction', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-06-27 10:45:16', '2023-06-27 10:52:41');
+(36, 'transactions', 'transactions', 'Transaction', 'Transactions', NULL, 'App\\Models\\Transaction', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-06-27 10:45:16', '2023-06-27 10:52:41'),
+(37, 'itineraries', 'itineraries', 'Itinerary', 'Itineraries', NULL, 'App\\Models\\Itinerary', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-06-29 20:14:22', '2023-06-29 21:04:09');
 
 -- --------------------------------------------------------
 
@@ -316,7 +329,7 @@ CREATE TABLE `destinations` (
 INSERT INTO `destinations` (`id`, `name`, `description`, `created_at`, `updated_at`, `image`, `location_id`, `rating`) VALUES
 (5, 'Pulau Maldives', '<p>Nikmati keindahan Pulau Maldives yang memukau dengan pasir putih, air laut yang jernih, dan vila-vila mewah menghadap lautan. Rasakan romansa yang memikat dengan pemandangan matahari terbenam yang spektakuler dan pengalaman menyelam bersama pasangan Anda</p>', '2023-06-23 22:15:36', '2023-06-26 04:17:43', 'destinations\\June2023\\EhFWUKIh0UsOCQdhTyjL.jpg', 30, 4.9),
 (6, 'Gunung Everest', '<p>Gunung Everest, yang terletak di Pegunungan Himalaya, adalah puncak tertinggi di dunia. Petualangan ini ditujukan untuk para pendaki yang berani menaklukkan puncak tertinggi ini. Menyertai ekspedisi mendaki Gunung Everest adalah pengalaman yang menguji keberanian, ketahanan, dan dedikasi, dengan pemandangan spektakuler dan perasaan prestasi yang tak terlupakan saat mencapai puncak.</p>', '2023-06-23 22:21:26', '2023-06-26 04:17:31', 'destinations\\June2023\\v89cw6GkkbrFMOO2Ult8.jpg', 29, 3.5),
-(7, 'Disneyland Paris', '<p>Deskripsi: Disneyland Paris adalah taman hiburan yang menyenangkan bagi seluruh keluarga. Dengan berbagai atraksi dan wahana yang menarik, pertunjukan karakter Disney, dan suasana magis yang tak tertandingi, destinasi ini menawarkan kesenangan dan kegembiraan bagi anak-anak dan orang dewasa. Nikmati petualangan dengan karakter favorit Disney dan buat kenangan yang indah bersama keluarga Anda.</p>', '2023-06-23 22:42:55', '2023-06-26 04:17:21', 'destinations\\June2023\\CkbDeKCWWTswnPAXvST2.jpg', 2, 4.3),
+(7, 'Paris', '<p>Deskripsi: Disneyland Paris adalah taman hiburan yang menyenangkan bagi seluruh keluarga. Dengan berbagai atraksi dan wahana yang menarik, pertunjukan karakter Disney, dan suasana magis yang tak tertandingi, destinasi ini menawarkan kesenangan dan kegembiraan bagi anak-anak dan orang dewasa. Nikmati petualangan dengan karakter favorit Disney dan buat kenangan yang indah bersama keluarga Anda.</p>', '2023-06-23 22:42:55', '2023-06-30 00:22:23', 'destinations\\June2023\\8jTUcypo6xY2leCQTBuE.webp', 2, 4.3),
 (8, 'Pantai Bora Bora', '<p>Pantai Bora Bora adalah surga tropis di Polinesia Prancis. Dengan pasir putih yang lembut, air laut berwarna biru turquoise yang menakjubkan, dan bungalow-bungalow terapung di atas air, destinasi ini adalah tempat ideal untuk bersantai dan menikmati keindahan alam. Aktivitas seperti menyelam, snorkeling, atau berlayar di perairan yang tenang akan menambah kesenangan liburan Anda.</p>', '2023-06-23 22:47:36', '2023-06-26 04:17:08', 'destinations\\June2023\\XKc98FF8AY1wu826Q7ZZ.jpg', 32, 4.9),
 (9, 'Kuil Angkor Wat, Kamboja', '<p>Kuil Angkor Wat di Kamboja adalah sebuah keajaiban arsitektur dan peninggalan sejarah yang menakjubkan. Dengan struktur yang megah dan indah, kuil ini adalah tujuan yang sangat menarik bagi pecinta budaya dan sejarah. Jelajahi kompleks kuil yang luas, saksikan keindahan seni dan ornamen yang rumit, dan rasakan keajaiban dan keagungan masa lalu yang tersimpan di tempat ini.</p>', '2023-06-23 22:53:37', '2023-06-26 04:16:57', 'destinations\\June2023\\lHeK1GzBh2F45j3aHkDG.jpg', 31, 4),
 (11, 'Labuan Bajo', '<p>Labuan Bajo adalah gerbang menuju Taman Nasional Komodo yang terkenal. Anda dapat menjelajahi pulau-pulau kecil di sekitar Labuan Bajo, melakukan snorkeling atau diving di perairan yang kaya akan kehidupan laut, dan menyaksikan matahari terbenam yang memukau.</p>', '2023-06-25 18:37:00', '2023-06-26 04:16:44', 'destinations\\June2023\\4TvFsUdK5ta1ImfFN2uj.jpg', 1, 4.5);
@@ -345,12 +358,33 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `itineraries` (
   `id` int(10) UNSIGNED NOT NULL,
-  `day` int(11) DEFAULT NULL,
-  `description` longtext DEFAULT NULL,
-  `destination_id` int(11) DEFAULT NULL,
+  `package_id` int(11) DEFAULT NULL,
+  `waktu_mulai` time DEFAULT NULL,
+  `waktu_selesai` time DEFAULT NULL,
+  `destinasi` tinytext DEFAULT NULL,
+  `aktifitas` text DEFAULT NULL,
+  `hari` tinytext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `itineraries`
+--
+
+INSERT INTO `itineraries` (`id`, `package_id`, `waktu_mulai`, `waktu_selesai`, `destinasi`, `aktifitas`, `hari`, `created_at`, `updated_at`) VALUES
+(11, 9, '09:00:00', '10:00:00', 'Paris', 'Kunjungan Menara Eiffel', 'hari pertama', '2023-06-29 20:48:00', '2023-06-29 21:05:04'),
+(12, 9, '11:00:00', '12:30:00', 'Louvre Museum', 'Melihat Mona Lisa dan karya seni terkenal lainnya', 'hari pertama', '2023-06-29 20:50:00', '2023-06-29 21:06:17'),
+(13, 9, '13:00:00', '14:00:00', 'Makan Siang', 'Restoran lokal di dekat Louvre Museum', 'hari pertama', '2023-06-29 20:51:00', '2023-06-29 21:06:39'),
+(14, 9, '15:00:00', '17:00:00', 'Seine River Cruise', 'Menikmati pemandangan kota Paris dari sungai', 'hari pertama', '2023-06-29 20:52:00', '2023-06-29 21:06:54'),
+(15, 9, '10:00:00', '12:00:00', 'Versailles', 'Mengunjungi Istana Versailles', 'hari kedua', '2023-06-29 20:52:00', '2023-06-29 21:07:05'),
+(16, 9, '12:30:00', '14:00:00', 'Makan Siang', 'Restoran di dekat Istana Versailles', 'hari kedua', '2023-06-29 20:53:00', '2023-06-29 21:07:18'),
+(17, 9, '14:30:00', '16:00:00', 'Gardens of Versailles', 'Jalan-jalan di taman-taman Versailles', 'hari kedua', '2023-06-29 20:53:00', '2023-06-29 21:07:35'),
+(18, 9, '09:00:00', '10:30:00', 'Amsterdam', 'Kunjungan Museum Van Gogh', 'hari ketiga', '2023-06-29 20:54:00', '2023-06-29 21:07:56'),
+(19, 9, '11:00:00', '12:30:00', 'Canal Cruise', 'Menjelajahi kanal-kanal Amsterdam', 'hari ketiga', '2023-06-29 20:55:00', '2023-06-29 21:08:23'),
+(20, 9, '13:00:00', '14:00:00', 'Makan Siang', 'Kafe terkenal di dekat Museum Van Gogh', 'hari ketiga', '2023-06-29 20:55:00', '2023-06-29 21:08:17'),
+(21, 9, '14:30:00', '16:00:00', 'Anne Frank House', 'Mengunjungi rumah Anne Frank', 'hari ketiga', '2023-06-29 20:56:00', '2023-06-29 21:08:10'),
+(22, 9, '19:00:00', '21:00:00', 'Makan Malam', 'Restoran khas Amsterdam', 'hari ketiga', '2023-06-29 20:57:00', '2023-06-29 21:08:04');
 
 -- --------------------------------------------------------
 
@@ -423,8 +457,7 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '2023-06-21 22:43:55', '2023-06-21 22:43:55'),
-(2, 'Location', '2023-06-25 07:47:33', '2023-06-25 07:47:33');
+(1, 'admin', '2023-06-21 22:43:55', '2023-06-21 22:43:55');
 
 -- --------------------------------------------------------
 
@@ -454,27 +487,27 @@ CREATE TABLE `menu_items` (
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '', '_self', 'voyager-boat', NULL, NULL, 1, '2023-06-21 22:43:55', '2023-06-21 22:43:55', 'voyager.dashboard', NULL),
-(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 5, '2023-06-21 22:43:55', '2023-06-25 07:53:09', 'voyager.media.index', NULL),
-(3, 1, 'Users', '', '_self', 'voyager-person', NULL, NULL, 4, '2023-06-21 22:43:55', '2023-06-25 07:53:09', 'voyager.users.index', NULL),
+(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 5, '2023-06-21 22:43:55', '2023-06-29 20:26:17', 'voyager.media.index', NULL),
+(3, 1, 'Users', '', '_self', 'voyager-person', NULL, NULL, 4, '2023-06-21 22:43:55', '2023-06-29 20:26:17', 'voyager.users.index', NULL),
 (4, 1, 'Roles', '', '_self', 'voyager-lock', NULL, NULL, 3, '2023-06-21 22:43:55', '2023-06-25 07:53:09', 'voyager.roles.index', NULL),
-(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 9, '2023-06-21 22:43:55', '2023-06-25 07:53:09', NULL, NULL),
+(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 9, '2023-06-21 22:43:55', '2023-06-29 20:26:17', NULL, NULL),
 (6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 1, '2023-06-21 22:43:55', '2023-06-25 07:51:59', 'voyager.menus.index', NULL),
 (7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 2, '2023-06-21 22:43:55', '2023-06-25 07:51:59', 'voyager.database.index', NULL),
 (8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 3, '2023-06-21 22:43:55', '2023-06-25 07:51:59', 'voyager.compass.index', NULL),
 (9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 4, '2023-06-21 22:43:55', '2023-06-25 07:51:59', 'voyager.bread.index', NULL),
-(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 10, '2023-06-21 22:43:55', '2023-06-25 07:53:09', 'voyager.settings.index', NULL),
-(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 8, '2023-06-21 22:43:56', '2023-06-25 07:53:09', 'voyager.categories.index', NULL),
-(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 6, '2023-06-21 22:43:56', '2023-06-25 07:53:09', 'voyager.posts.index', NULL),
-(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 7, '2023-06-21 22:43:56', '2023-06-25 07:53:09', 'voyager.pages.index', NULL),
-(17, 1, 'Products', '', '_self', NULL, NULL, NULL, 11, '2023-06-21 23:12:42', '2023-06-25 07:53:09', 'voyager.products.index', NULL),
+(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 10, '2023-06-21 22:43:55', '2023-06-29 20:26:17', 'voyager.settings.index', NULL),
+(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 8, '2023-06-21 22:43:56', '2023-06-29 20:26:17', 'voyager.categories.index', NULL),
+(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 6, '2023-06-21 22:43:56', '2023-06-29 20:26:17', 'voyager.posts.index', NULL),
+(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 7, '2023-06-21 22:43:56', '2023-06-29 20:26:17', 'voyager.pages.index', NULL),
+(17, 1, 'Products', '', '_self', NULL, NULL, NULL, 11, '2023-06-21 23:12:42', '2023-06-29 20:26:17', 'voyager.products.index', NULL),
 (20, 1, 'Accommodations', '', '_self', NULL, NULL, 28, 4, '2023-06-22 02:24:22', '2023-06-25 18:28:14', 'voyager.accommodations.index', NULL),
 (23, 1, 'Destinations', '', '_self', NULL, NULL, 28, 2, '2023-06-23 07:28:04', '2023-06-25 18:28:10', 'voyager.destinations.index', NULL),
-(24, 1, 'Itineraries', '', '_self', NULL, NULL, 28, 6, '2023-06-24 21:58:55', '2023-06-25 18:28:14', 'voyager.itineraries.index', NULL),
 (25, 1, 'Packages', '', '_self', NULL, NULL, 28, 1, '2023-06-24 22:17:11', '2023-06-25 18:28:10', 'voyager.packages.index', NULL),
 (26, 1, 'Countries', '', '_self', NULL, NULL, 28, 3, '2023-06-25 07:00:56', '2023-06-25 18:28:12', 'voyager.countries.index', NULL),
 (27, 1, 'Locations', '', '_self', NULL, NULL, 28, 5, '2023-06-25 07:02:13', '2023-06-25 18:28:14', 'voyager.locations.index', NULL),
 (28, 1, 'Healing apps', '', '_self', 'voyager-boat', '#000000', NULL, 2, '2023-06-25 07:51:47', '2023-06-25 07:54:07', NULL, ''),
-(29, 1, 'Transactions', '', '_self', NULL, NULL, NULL, 12, '2023-06-27 10:45:16', '2023-06-27 10:45:16', 'voyager.transactions.index', NULL);
+(29, 1, 'Transactions', '', '_self', NULL, NULL, 28, 6, '2023-06-27 10:45:16', '2023-06-29 20:26:09', 'voyager.transactions.index', NULL),
+(30, 1, 'Itineraries', '', '_self', NULL, NULL, 28, 7, '2023-06-29 20:14:22', '2023-06-29 20:26:17', 'voyager.itineraries.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -538,19 +571,20 @@ CREATE TABLE `packages` (
   `image` text DEFAULT NULL,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
-  `max_capacity` int(11) DEFAULT NULL
+  `max_capacity` int(11) DEFAULT NULL,
+  `days` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `packages`
 --
 
-INSERT INTO `packages` (`id`, `name`, `description`, `price`, `created_at`, `updated_at`, `image`, `start_date`, `end_date`, `max_capacity`) VALUES
-(7, 'Paket Liburan Romantis', '<p>Nikmati momen romantis bersama pasangan Anda dengan paket liburan ini. Dengan pemandangan yang indah dan akomodasi mewah, paket ini akan menciptakan kenangan tak terlupakan.</p>', 5000000, '2023-06-23 22:10:29', '2023-06-25 18:45:33', 'packages\\June2023\\DlbeHqw4Z8lzx7Q10UMr.jpg', '2023-06-26', '2023-06-30', 2),
-(8, 'Paket Liburan Petualangan', '<p>Tantang adrenalin Anda dengan paket liburan petualangan ini. Menyertai berbagai kegiatan ekstrem seperti hiking, arung jeram, dan panjat tebing, Anda akan merasakan sensasi yang tak terlupakan</p>', 7500000, '2023-06-23 22:19:04', '2023-06-24 22:24:08', 'packages\\June2023\\W2Iu9uxXxvpTpdGNo4nQ.jpg', '2023-06-25', '2023-06-27', 3),
-(9, 'Paket Liburan Keluarga', '<p>Jadikan waktu bersama keluarga lebih istimewa dengan paket liburan ini. Dengan berbagai fasilitas dan kegiatan yang ramah keluarga, paket ini akan memberikan kegembiraan kepada seluruh anggota keluarga</p>', 4000000, '2023-06-23 22:41:05', '2023-06-24 22:23:34', 'packages\\June2023\\QzI0dY5IqR1qtEyIvtxq.jpg', '2023-06-25', '2023-06-30', 5),
-(10, 'Paket Liburan Santai', '<p>Rehatkan diri Anda dengan paket liburan santai ini. Nikmati pasir putih dan air laut yang jernih, sambil menikmati pijatan lembut di spa. Paket ini akan membawa kedamaian dan ketenangan.</p>', 3500000, '2023-06-23 22:45:42', '2023-06-24 22:23:05', 'packages\\June2023\\DevHmb6U7JmNa4QWvgG3.jpg', '2023-06-22', '2023-06-23', 2),
-(11, 'Paket Liburan Budaya', '<p>Temukan kekayaan budaya dengan paket liburan ini. Kunjungi tempat-tempat bersejarah, museum, dan pertunjukan seni yang memukau. Paket ini akan memberikan pengalaman yang mendalam tentang warisan budaya.</p>', 6000000, '2023-06-23 22:51:27', '2023-06-24 22:18:57', 'packages\\June2023\\SSoUHSiECoZBQ1PYgGlU.jpg', '2023-06-25', '2023-07-01', 4);
+INSERT INTO `packages` (`id`, `name`, `description`, `price`, `created_at`, `updated_at`, `image`, `start_date`, `end_date`, `max_capacity`, `days`) VALUES
+(7, 'Paket Liburan Romantis', '<p>Nikmati momen romantis bersama pasangan Anda dengan paket liburan ini. Dengan pemandangan yang indah dan akomodasi mewah, paket ini akan menciptakan kenangan tak terlupakan.</p>', 5000000, '2023-06-23 22:10:29', '2023-06-29 20:25:44', 'packages\\June2023\\DlbeHqw4Z8lzx7Q10UMr.jpg', '2023-06-26', '2023-06-30', 2, 5),
+(8, 'Paket Liburan Petualangan', '<p>Tantang adrenalin Anda dengan paket liburan petualangan ini. Menyertai berbagai kegiatan ekstrem seperti hiking, arung jeram, dan panjat tebing, Anda akan merasakan sensasi yang tak terlupakan</p>', 7500000, '2023-06-23 22:19:04', '2023-06-29 20:25:30', 'packages\\June2023\\W2Iu9uxXxvpTpdGNo4nQ.jpg', '2023-06-25', '2023-06-27', 3, 10),
+(9, 'Paket Liburan Keluarga', '<p>Jadikan waktu bersama keluarga lebih istimewa dengan paket liburan ini. Dengan berbagai fasilitas dan kegiatan yang ramah keluarga, paket ini akan memberikan kegembiraan kepada seluruh anggota keluarga</p>', 4000000, '2023-06-23 22:41:05', '2023-07-07 20:15:32', 'packages\\June2023\\QzI0dY5IqR1qtEyIvtxq.jpg', '2023-07-08', '2023-07-31', 5, 3),
+(10, 'Paket Liburan Santai', '<p>Rehatkan diri Anda dengan paket liburan santai ini. Nikmati pasir putih dan air laut yang jernih, sambil menikmati pijatan lembut di spa. Paket ini akan membawa kedamaian dan ketenangan.</p>', 3500000, '2023-06-23 22:45:42', '2023-07-07 20:13:43', 'packages\\June2023\\DevHmb6U7JmNa4QWvgG3.jpg', '2023-06-22', '2023-07-31', 2, 5),
+(11, 'Paket Liburan Budaya', '<p>Temukan kekayaan budaya dengan paket liburan ini. Kunjungi tempat-tempat bersejarah, museum, dan pertunjukan seni yang memukau. Paket ini akan memberikan pengalaman yang mendalam tentang warisan budaya.</p>', 6000000, '2023-06-23 22:51:27', '2023-07-07 20:13:28', 'packages\\June2023\\SSoUHSiECoZBQ1PYgGlU.jpg', '2023-06-25', '2023-07-31', 4, 3);
 
 -- --------------------------------------------------------
 
@@ -699,11 +733,6 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (88, 'edit_destinations', 'destinations', '2023-06-23 07:28:04', '2023-06-23 07:28:04'),
 (89, 'add_destinations', 'destinations', '2023-06-23 07:28:04', '2023-06-23 07:28:04'),
 (90, 'delete_destinations', 'destinations', '2023-06-23 07:28:04', '2023-06-23 07:28:04'),
-(91, 'browse_itineraries', 'itineraries', '2023-06-24 21:58:55', '2023-06-24 21:58:55'),
-(92, 'read_itineraries', 'itineraries', '2023-06-24 21:58:55', '2023-06-24 21:58:55'),
-(93, 'edit_itineraries', 'itineraries', '2023-06-24 21:58:55', '2023-06-24 21:58:55'),
-(94, 'add_itineraries', 'itineraries', '2023-06-24 21:58:55', '2023-06-24 21:58:55'),
-(95, 'delete_itineraries', 'itineraries', '2023-06-24 21:58:55', '2023-06-24 21:58:55'),
 (96, 'browse_packages', 'packages', '2023-06-24 22:17:11', '2023-06-24 22:17:11'),
 (97, 'read_packages', 'packages', '2023-06-24 22:17:11', '2023-06-24 22:17:11'),
 (98, 'edit_packages', 'packages', '2023-06-24 22:17:11', '2023-06-24 22:17:11'),
@@ -723,7 +752,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (112, 'read_transactions', 'transactions', '2023-06-27 10:45:16', '2023-06-27 10:45:16'),
 (113, 'edit_transactions', 'transactions', '2023-06-27 10:45:16', '2023-06-27 10:45:16'),
 (114, 'add_transactions', 'transactions', '2023-06-27 10:45:16', '2023-06-27 10:45:16'),
-(115, 'delete_transactions', 'transactions', '2023-06-27 10:45:16', '2023-06-27 10:45:16');
+(115, 'delete_transactions', 'transactions', '2023-06-27 10:45:16', '2023-06-27 10:45:16'),
+(116, 'browse_itineraries', 'itineraries', '2023-06-29 20:14:22', '2023-06-29 20:14:22'),
+(117, 'read_itineraries', 'itineraries', '2023-06-29 20:14:22', '2023-06-29 20:14:22'),
+(118, 'edit_itineraries', 'itineraries', '2023-06-29 20:14:22', '2023-06-29 20:14:22'),
+(119, 'add_itineraries', 'itineraries', '2023-06-29 20:14:22', '2023-06-29 20:14:22'),
+(120, 'delete_itineraries', 'itineraries', '2023-06-29 20:14:22', '2023-06-29 20:14:22');
 
 -- --------------------------------------------------------
 
@@ -742,6 +776,7 @@ CREATE TABLE `permission_role` (
 
 INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (1, 1),
+(1, 2),
 (2, 1),
 (3, 1),
 (4, 1),
@@ -766,66 +801,76 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (23, 1),
 (24, 1),
 (25, 1),
-(26, 1),
-(27, 1),
-(28, 1),
-(29, 1),
-(30, 1),
-(31, 1),
-(32, 1),
-(33, 1),
-(34, 1),
-(35, 1),
-(36, 1),
-(37, 1),
-(38, 1),
-(39, 1),
-(40, 1),
-(46, 1),
-(47, 1),
-(48, 1),
-(49, 1),
-(50, 1),
-(56, 1),
-(57, 1),
-(58, 1),
-(59, 1),
-(60, 1),
 (71, 1),
+(71, 2),
 (72, 1),
+(72, 2),
 (73, 1),
+(73, 2),
 (74, 1),
+(74, 2),
 (75, 1),
+(75, 2),
 (86, 1),
+(86, 2),
 (87, 1),
+(87, 2),
 (88, 1),
+(88, 2),
 (89, 1),
+(89, 2),
 (90, 1),
-(91, 1),
-(92, 1),
-(93, 1),
-(94, 1),
-(95, 1),
+(90, 2),
 (96, 1),
+(96, 2),
 (97, 1),
+(97, 2),
 (98, 1),
+(98, 2),
 (99, 1),
+(99, 2),
 (100, 1),
+(100, 2),
 (101, 1),
+(101, 2),
 (102, 1),
+(102, 2),
 (103, 1),
+(103, 2),
 (104, 1),
+(104, 2),
 (105, 1),
+(105, 2),
 (106, 1),
+(106, 2),
 (107, 1),
+(107, 2),
 (108, 1),
+(108, 2),
 (109, 1),
+(109, 2),
 (110, 1),
+(110, 2),
 (111, 1),
+(111, 2),
 (112, 1),
+(112, 2),
 (113, 1),
+(113, 2),
 (114, 1),
-(115, 1);
+(114, 2),
+(115, 1),
+(115, 2),
+(116, 1),
+(116, 2),
+(117, 1),
+(117, 2),
+(118, 1),
+(118, 2),
+(119, 1),
+(119, 2),
+(120, 1),
+(120, 2);
 
 -- --------------------------------------------------------
 
@@ -852,7 +897,7 @@ CREATE TABLE `personal_access_tokens` (
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
 (10, 'App\\Models\\User', 1, 'auth_token', '086234238e1d39bf244cf2e5839acef7291cd2e6be9fac8892f250b650e28ec2', '[\"*\"]', '2023-06-27 11:41:27', NULL, '2023-06-27 07:38:56', '2023-06-27 11:41:27'),
-(11, 'App\\Models\\User', 3, 'auth_token', '717db2c975d4fc4e48bb62043b32922d87c912182301596fcb8f7de08194cdd0', '[\"*\"]', '2023-06-27 11:42:58', NULL, '2023-06-27 11:42:35', '2023-06-27 11:42:58');
+(42, 'App\\Models\\User', 3, 'auth_token', '13143b0865e34429b06d5e5c18b4c0dd8b72c45f00467b47632e13947ede14e5', '[\"*\"]', NULL, NULL, '2023-06-29 05:32:59', '2023-06-29 05:32:59');
 
 -- --------------------------------------------------------
 
@@ -1075,7 +1120,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `tanggal_lahir`, `alamat`, `nomor_telp`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, NULL, NULL, NULL, '$2y$10$/EP/G05/fSoIYm5pnUfh1eQukUWIYPxyjCt9.twvKyscsYoOoWWpK', 'Gj4KBj7H48iYDBsy1fr1qu9IKqdR37qSoKMZDKNhR6VQ7jYKLVqmFdGlP63c', NULL, '2023-06-21 22:43:56', '2023-06-21 22:43:56'),
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, NULL, NULL, NULL, '$2y$10$/EP/G05/fSoIYm5pnUfh1eQukUWIYPxyjCt9.twvKyscsYoOoWWpK', 'USvFjwd3bBsC29i3pguF0qZQXbl05vkMJ9ZDxx1qNrK81L03mmJE1IjE0yGt', NULL, '2023-06-21 22:43:56', '2023-06-21 22:43:56'),
 (3, 2, 'Zulkarnaen', 'member@gmail.com', 'users/default.png', '1998-01-24', 'Jalan Kutilang', '0888888888', NULL, '$2y$10$RBAfKmBf.MmvbUtRwOGaA.KmA1x/cugWPw2YChQIfWCtiIbiJofc6', NULL, NULL, '2023-06-27 07:26:53', '2023-06-27 07:26:53');
 
 -- --------------------------------------------------------
@@ -1285,7 +1330,7 @@ ALTER TABLE `user_roles`
 -- AUTO_INCREMENT for table `accommodations`
 --
 ALTER TABLE `accommodations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -1303,13 +1348,13 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `destinations`
@@ -1327,7 +1372,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `itineraries`
 --
 ALTER TABLE `itineraries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `locations`
@@ -1339,13 +1384,13 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1375,13 +1420,13 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `posts`
