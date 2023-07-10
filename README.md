@@ -7,8 +7,35 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Basis URL
+## Tentang
+Hallo semua nya ini merupakan sebuah aplikasi untuk pemesanan tiket liburan berdasarkan package yang sudah di sediakan, aplikasi ini masih berjalan di local tapi jika teman teman mau melakukan hosting ke aplikasi ini bisa menggunakan hosting yang teman teman miliki, bisa hubungi saya jika teman teman kesulitan untuk melakukan hosting.
 
+## Tampilan aplikasi ini
+### Tampilan Admin
+
+
+
+
+
+
+### Tampilan Mobile
+
+
+
+## Cara menjalankan project ini
+Untuk mengakses api ini teman teman perlu melakukan beberapa tahap sebagai berikut:
+- Menginstall Composser
+- Menginstall laravel
+- Membuat data base di php myadmin
+- Melakukan import file ke database, lokasi di file database/healing_app.sql
+- Membuat sebuah file env
+- Melakukan generate key, **php artisan key:generate**
+- Memasukan nama database yang sudah di buat sebelumnya
+- Lakukan printah **composser intall** di terminal
+memang tahapan nya agak panjang, mungkin teman teman dapat melihat tutorial install project dari laravel di [sini]()
+
+
+## Basis URL
 
 Base url tergantung dengan setting pada komputer teman teman, disini karna masih menggunakan local maka base url yang saya gunakan sebagai berikut:
 ```
