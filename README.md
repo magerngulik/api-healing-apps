@@ -12,14 +12,21 @@ Hallo semua nya ini merupakan sebuah aplikasi untuk pemesanan tiket liburan berd
 
 ## Tampilan aplikasi ini
 ### Tampilan Admin
-
-
-
-
-
-
+**Country Menu**
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/country.png)
+**Package Menu**
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/package.png)
+**Destinasi Menu**
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/destinasi.png)
 ### Tampilan Mobile
-
+**Tampilan Login**
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/tampilan%20login.png)
+**Tampilam Home Page**
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/home%20page.png)
+**Tampilan Detail Package**
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/tampilan%20destination.png)
+**Tampilan Detail Destinasi**
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/tampilan%20detail%20destination.png)
 
 
 ## Cara menjalankan project ini
@@ -32,8 +39,13 @@ Untuk mengakses api ini teman teman perlu melakukan beberapa tahap sebagai berik
 - Melakukan generate key, **php artisan key:generate**
 - Memasukan nama database yang sudah di buat sebelumnya
 - Lakukan printah **composser intall** di terminal <br>
-memang tahapan nya agak panjang, mungkin teman teman dapat melihat tutorial install project dari laravel di [sini]()
+memang tahapan nya agak panjang, mungkin teman teman dapat melihat tutorial install project dari laravel di [sini](https://www.youtube.com/watch?v=PYFV_IFHg2U)
 
+
+## Menu Admin
+Untuk mengakses ke menu admin bisa ke **Url /admin** example : _https://healing-app.test/admin_
+Email : admin@admin.com
+Password : password
 
 ## Basis URL
 
