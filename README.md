@@ -8,26 +8,7 @@
 </p>
 
 ## Tentang
-Hallo semua nya ini merupakan sebuah aplikasi untuk pemesanan tiket liburan berdasarkan package yang sudah di sediakan, aplikasi ini masih berjalan di local tapi jika teman teman mau melakukan hosting ke aplikasi ini bisa menggunakan hosting yang teman teman miliki, bisa hubungi saya jika teman teman kesulitan untuk melakukan hosting.
-
-## Tampilan aplikasi ini
-### Tampilan Admin
-#### Country Menu
-![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/country.png)
-#### Package Menu
-![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/package.png)
-#### Destinasi Menu
-![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/destinasi.png)
-### Tampilan Mobile
-#### Tampilan Login
-![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/tampilan%20login.png)
-#### Tampilam Home Page
-![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/home%20page.png)
-#### Tampilan Detail Package
-![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/tampilan%20destination.png)
-#### Tampilan Detail Destinasi
-![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/tampilan%20detail%20destination.png)
-
+Hallo semua nya ini merupakan sebuah aplikasi untuk pemesanan tiket liburan berdasarkan package yang sudah di sediakan, aplikasi ini masih berjalan di local tapi jika teman teman mau melakukan hosting ke aplikasi ini bisa menggunakan hosting yang teman teman miliki, bisa hubungi saya jika teman teman kesulitan untuk melakukan hosting. Untuk contoh tampilan dari aplikasi ini teman teman bisa lihat [disini](#tampilan-aplikasi-ini)
 
 ## Cara menjalankan project ini
 Untuk mengakses api ini teman teman perlu melakukan beberapa tahap sebagai berikut:
@@ -896,3 +877,21 @@ GET /api/destination/5
 }
 ```
 
+
+## Tampilan aplikasi ini
+### Tampilan Admin
+#### Country Menu
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/country.png)
+#### Package Menu
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/package.png)
+#### Destinasi Menu
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/destinasi.png)
+### Tampilan Mobile
+#### Tampilan Login
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/tampilan%20login.png)
+#### Tampilam Home Page
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/home%20page.png)
+#### Tampilan Detail Package
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/tampilan%20destination.png)
+#### Tampilan Detail Destinasi
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/tampilan%20detail%20destination.png)
