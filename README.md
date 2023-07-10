@@ -12,20 +12,20 @@ Hallo semua nya ini merupakan sebuah aplikasi untuk pemesanan tiket liburan berd
 
 ## Tampilan aplikasi ini
 ### Tampilan Admin
-**Country Menu**
+**Country Menu** <br>
 ![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/country.png)
-**Package Menu**
+**Package Menu**<br>
 ![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/package.png)
-**Destinasi Menu**
+**Destinasi Menu**<br>
 ![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/destinasi.png)
 ### Tampilan Mobile
-**Tampilan Login**
+**Tampilan Login**<br>
 ![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/tampilan%20login.png)
-**Tampilam Home Page**
+**Tampilam Home Page**<br>
 ![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/home%20page.png)
-**Tampilan Detail Package**
+**Tampilan Detail Package**<br>
 ![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/tampilan%20destination.png)
-**Tampilan Detail Destinasi**
+**Tampilan Detail Destinasi**<br>
 ![App Screenshot](https://raw.githubusercontent.com/magerngulik/api-healing-apps/main/database/showcase/tampilan%20detail%20destination.png)
 
 
