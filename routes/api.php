@@ -22,7 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/get-by-location-id', [PackageController::class, 'getLocationByCountryId']);
-
 Route::get('/destination', [DestinationController::class, 'index']);
 Route::get('/destination/{id}', [DestinationController::class, 'show']);
 

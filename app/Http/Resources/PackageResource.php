@@ -33,12 +33,15 @@ class PackageResource extends JsonResource
             'person' => $this->max_capacity,
             "destination" => $this->whenLoaded('destination',function(){
                 return collect($this->destination)->map(function ($item) {
+                    $accommodation = $item->accommodation; 
                     return [
                         "id" => $item['id'],
                         "name" => $item['name'],
                         "description" => $item['description'],
                         "image" => ImageHelper::convertImagePathToUrl($item['image']),
                         "location_name" => $item['location']['name'],
+                        "rating" => $item['rating'],
+                        "accommodation " => collect($accommodation)->except(['created_at', 'updated_at'])
                     ];
                 });
             }),            
