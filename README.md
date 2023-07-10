@@ -25,7 +25,8 @@ memang tahapan nya agak panjang, mungkin teman teman dapat melihat tutorial inst
 
 ## Menu Admin
 Untuk mengakses ke menu admin bisa ke **Url /admin** example : _https://healing-app.test/admin_
-Email : admin@admin.com
+<br>
+Email : admin@admin.com <br>
 Password : password
 
 ## Basis URL
@@ -876,7 +877,6 @@ GET /api/destination/5
 
 }
 ```
-
 
 ## Tampilan aplikasi ini
 ### Tampilan Admin
