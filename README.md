@@ -31,7 +31,7 @@ Untuk mengakses api ini teman teman perlu melakukan beberapa tahap sebagai berik
 - Membuat sebuah file env
 - Melakukan generate key, **php artisan key:generate**
 - Memasukan nama database yang sudah di buat sebelumnya
-- Lakukan printah **composser intall** di terminal
+- Lakukan printah **composser intall** di terminal <br>
 memang tahapan nya agak panjang, mungkin teman teman dapat melihat tutorial install project dari laravel di [sini]()
 
 
